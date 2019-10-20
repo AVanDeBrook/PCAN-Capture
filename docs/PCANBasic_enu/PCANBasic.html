@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>PCANBasic</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="Classes.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Classes.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="TPCANBasic.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+PCANBasic</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Defines a class which represents the PCAN-Basic API for using within the Microsoft's .NET Framework and Python (ver. 2.6).</p></div>
+</div>
+<a name="53796E746178"></a><div class="Element14">
+Syntax</div>
+<div class="Element11">
+<div class="Element10">
+</div>
+</div>
+<a name="4323"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('4323');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4323">C#</a></div>
+<div id="div4323">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #871F78">public static class</span> PCANBasic</pre></div></div>
+</div>
+<a name="432B2B202F20434C52"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('432B2B202F20434C52');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img432B2B202F20434C52">C++ / CLR</a></div>
+<div id="div432B2B202F20434C52">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #871F78">public ref class</span> PCANBasic <span style="color: #871F78">abstract sealed</span></pre></div></div>
+</div>
+<a name="56697375616C204261736963"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('56697375616C204261736963');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img56697375616C204261736963">Visual Basic</a></div>
+<div id="div56697375616C204261736963">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #871F78">Public NotInheritable</span> <span style="color: #871F78">Class</span> PCANBasic</pre></div></div>
+</div>
+<a name="507974686F6E"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('507974686F6E');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img507974686F6E">Python</a></div>
+<div id="div507974686F6E">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #871F78">class</span> PCANBasic</pre></div></div>
+</div>
+<a name="52656D61726B73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52656D61726B73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52656D61726B73">Remarks</a></div>
+<div id="div52656D61726B73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The PCANBasic class collects and implements the PCAN-Basic API functions. Each method is called just like the API function with the exception that the prefix &quot;CAN_&quot; is not used. The structure and functionality of the methods and API functions is the same.&nbsp;</p>
+<p class="Element10">
+Within the .NET Framework from Microsoft, the PCANBasic class is a static, not inheritable, class. It can (must) directly be used, without any instance of it, e.g. : </p><div class="Element13"><div class="Element12"><pre class="Element12"><span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span><span style="color: #00008A"> res;</span>
+<span style="color: #008000">// Static use, without any instance</span>
+<span style="color: #008000">//</span>
+<span style="color: #00008A">res = </span>PCANBasic.<a href="Initialize.html">Initialize</a><span style="color: #00008A">(PCAN_USBBUS1,PCAN_BAUD_500K);</span></pre></div></div>
+<p class="Element10">
+Within Python, a variable must be instantiated with an object of type PCANBasic, in order to use the API. </p><div class="Element13"><div class="Element12"><pre class="Element12"><span style="color: #008000"># Object instantiation</span>
+<span style="color: #008000">#</span>
+<span style="color: #00008A">objPCAN = </span><span style="color: #0000FF">PCANBasic</span><span style="color: #00008A">()</span>
+<span style="color: #00008A">res = </span>objPCAN.<a href="Initialize.html">Initialize</a><span style="color: #00008A">(PCAN_USBBUS1, PCAN_BAUD_500K)</span></pre></div></div>
+<p class="Element10">
+<strong>Note</strong> that this class under Delphi is called <a href="TPCANBasic.html">TPCANBasic</a>.</p></div>
+</div>
+</div>
+<a name="53656520416C736F"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('53656520416C736F');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img53656520416C736F">See Also</a></div>
+<div id="div53656520416C736F">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<a href="Methods.html">Methods</a>&nbsp;</p>
+<p class="Element10">
+<a href="Definitions.html">Definitions</a>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<strong>Delphi</strong>: <a href="TPCANBasic.html">TPCANBasic</a></p></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: PCANBasic');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

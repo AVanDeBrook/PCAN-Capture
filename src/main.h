@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 
-
 /****** Prototypes ******/
 void Process_Voltages(void);
 void Display_Voltages(void);

@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>TPCANStatus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="TPCANHandle.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Types.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="TPCANDevice.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+TPCANStatus</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Represents a PCAN status/error code. According with the programming language, this type can be a group of defined values or an enumeration.</p></div>
+</div>
+<a name="53796E746178"></a><div class="Element14">
+Syntax</div>
+<div class="Element11">
+<div class="Element10">
+</div>
+</div>
+<a name="432B2B"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('432B2B');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img432B2B">C++</a></div>
+<div id="div432B2B">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #871F78">#define </span>TPCANStatus <span style="color: #0000FF">DWORD</span>
+
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_OK</span> 0x00000
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_XMTFULL</span> 0x00001
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_OVERRUN</span> 0x00002
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> 0x00004
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> 0x00008
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_BUSWARNING</span>  <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span>
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span> 0x40000
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_BUSOFF</span> 0x00010
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ANYBUSERR</span> (<span style="color: #00008A">PCAN_ERROR_BUSWARNING | PCAN_ERROR_BUSLIGHT</span> | <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> | <span style="color: #00008A">PCAN_ERROR_BUSOFF | PCAN_ERROR_BUSPASSIVE</span>)
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_QRCVEMPTY</span> 0x00020
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_QOVERRUN</span> 0x00040
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> 0x00080
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_REGTEST</span> 0x00100
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_NODRIVER</span> 0x00200
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_HWINUSE</span> 0x00400
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_NETINUSE</span> 0x00800
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLHW</span> 0x01400
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLNET</span> 0x01800
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span> 0x01C00
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLHANDLE</span> (<span style="color: #00008A">PCAN_ERROR_ILLHW</span> | <span style="color: #00008A">PCAN_ERROR_ILLNET</span> | <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span>)
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_RESOURCE</span> 0x02000
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> 0x04000
+<span style="color: #871F78">#define</span> <span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL</span> 0x08000
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_UNKNOWN</span> 0x10000
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_ILLDATA</span> 0x20000
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_CAUTION</span> 0x2000000
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_INITIALIZE</span> 0x4000000
+<span style="color: #871F78">#define </span><span style="color: #00008A">PCAN_ERROR_ILLOPERATION</span> 0x8000000
+</pre></div></div>
+</div>
+<a name="50617363616C204F4F"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('50617363616C204F4F');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img50617363616C204F4F">Pascal OO</a></div>
+<div id="div50617363616C204F4F">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #575D94">{$Z4}</span>
+TPCANStatus = (
+    <span style="color: #00008A">PCAN_ERROR_OK </span>= $00000,
+    <span style="color: #00008A">PCAN_ERROR_XMTFULL </span>= $00001,
+    <span style="color: #00008A">PCAN_ERROR_OVERRUN </span>= $00002,
+    <span style="color: #00008A">PCAN_ERROR_BUSLIGHT </span>= $00004,
+    <span style="color: #00008A">PCAN_ERROR_BUSHEAVY </span>= $00008,
+    <span style="color: #00008A">PCAN_ERROR_BUSHWARNING</span>  = <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span>),
+    <span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span> = $40000,
+    <span style="color: #00008A">PCAN_ERROR_BUSOFF </span>= $00010,
+    <span style="color: #00008A">PCAN_ERROR_ANYBUSERR </span>= <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSHWARNING</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSOFF</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span>),
+    <span style="color: #00008A">PCAN_ERROR_QRCVEMPTY </span>= $00020,
+    <span style="color: #00008A">PCAN_ERROR_QOVERRUN </span> = $00040,
+    <span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> = $00080,
+    <span style="color: #00008A">PCAN_ERROR_REGTEST </span>= $00100,
+    <span style="color: #00008A">PCAN_ERROR_NODRIVER </span>= $00200,
+<span style="color: #00008A">    PCAN_ERROR_HWINUSE</span> = $00400,
+<span style="color: #00008A">    PCAN_ERROR_NETINUSE</span> = $00800,
+<span style="color: #00008A">    PCAN_ERROR_ILLHW</span> = $01400,
+<span style="color: #00008A">    PCAN_ERROR_ILLNET</span> = $01800,
+<span style="color: #00008A">    PCAN_ERROR_ILLCLIENT</span> = $01C00,
+    <span style="color: #00008A">PCAN_ERROR_ILLHANDLE</span> = <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_ILLHW</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_ILLNET</span>) <span style="color: #871F78">Or</span> <span style="color: #0000FF">Byte</span>(<span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span>),
+    <span style="color: #00008A">PCAN_ERROR_RESOURCE </span>= $02000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> = $04000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL </span>= $08000,
+    <span style="color: #00008A">PCAN_ERROR_UNKNOWN </span>= $10000,
+    <span style="color: #00008A">PCAN_ERROR_ILLDATA </span>= $20000,
+    <span style="color: #00008A">PCAN_ERROR_CAUTION </span>= $2000000,
+    <span style="color: #00008A">PCAN_ERROR_INITIALIZE </span>= $4000000,
+    <span style="color: #00008A">PCAN_ERROR_ILLOPERATION </span>= $8000000
+);
+</pre></div></div>
+</div>
+<a name="4323"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('4323');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4323">C#</a></div>
+<div id="div4323">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #575D94">[Flags]</span>
+<span style="color: #871F78">public enum </span>TPCANStatus : <span style="color: #0000FF">uint</span>
+{
+    <span style="color: #00008A">PCAN_ERROR_OK</span> = 0x00000,
+    <span style="color: #00008A">PCAN_ERROR_XMTFULL</span> = 0x00001,
+    <span style="color: #00008A">PCAN_ERROR_OVERRUN</span> = 0x00002,
+    <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> = 0x00004,
+    <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> = 0x00008,
+    <span style="color: #00008A">PCAN_ERROR_BUSWARNING</span>   = <span style="color: #00008A">PCAN_ERROR_BUSHEAVY,</span>
+    <span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span>   = 0x40000,
+    <span style="color: #00008A">PCAN_ERROR_BUSOFF</span> = 0x00010,
+    <span style="color: #00008A">PCAN_ERROR_ANYBUSERR</span> = (<span style="color: #00008A">PCAN_ERROR_BUSWARNING</span> | <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> | <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> | <span style="color: #00008A">PCAN_ERROR_BUSOFF | PCAN_ERROR_BUSPASSIVE</span>),
+    <span style="color: #00008A">PCAN_ERROR_QRCVEMPTY</span> = 0x00020,
+    <span style="color: #00008A">PCAN_ERROR_QOVERRUN</span> = 0x00040,
+    <span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> = 0x00080,
+    <span style="color: #00008A">PCAN_ERROR_REGTEST</span> = 0x00100,
+    <span style="color: #00008A">PCAN_ERROR_NODRIVER</span> = 0x00200,
+    <span style="color: #00008A">PCAN_ERROR_HWINUSE</span> = 0x00400,
+    <span style="color: #00008A">PCAN_ERROR_NETINUSE</span> = 0x00800,
+    <span style="color: #00008A">PCAN_ERROR_ILLHW</span> = 0x01400,
+    <span style="color: #00008A">PCAN_ERROR_ILLNET</span> = 0x01800,
+    <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span> = 0x01C00,
+    <span style="color: #00008A">PCAN_ERROR_ILLHANDLE</span> = (<span style="color: #00008A">PCAN_ERROR_ILLHW</span> | <span style="color: #00008A">PCAN_ERROR_ILLNET</span> | <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span>),
+    <span style="color: #00008A">PCAN_ERROR_RESOURCE</span> = 0x02000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> = 0x04000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL</span> = 0x08000,
+    <span style="color: #00008A">PCAN_ERROR_UNKNOWN</span> = 0x10000,
+    <span style="color: #00008A">PCAN_ERROR_ILLDATA</span> = 0x20000,
+    <span style="color: #00008A">PCAN_ERROR_CAUTION</span> = 0x2000000,
+    <span style="color: #00008A">PCAN_ERROR_INITIALIZE</span> = 0x4000000,
+    <span style="color: #00008A">PCAN_ERROR_ILLOPERATION</span> = 0x8000000,
+}
+</pre></div></div>
+</div>
+<a name="432B2B202F20434C52"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('432B2B202F20434C52');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img432B2B202F20434C52">C++ / CLR</a></div>
+<div id="div432B2B202F20434C52">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #575D94">[Flags]</span>
+<span style="color: #871F78">public enum class </span>TPCANStatus : <span style="color: #0000FF">UInt32</span>
+{
+    <span style="color: #00008A">PCAN_ERROR_OK</span> = 0x00000,
+    <span style="color: #00008A">PCAN_ERROR_XMTFULL</span> = 0x00001,
+    <span style="color: #00008A">PCAN_ERROR_OVERRUN</span> = 0x00002,
+    <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> = 0x00004,
+    <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> = 0x00008,
+    <span style="color: #00008A">PCAN_ERROR_BUSWARNING</span>   = <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span>,
+    <span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span> = 0x40000,
+    <span style="color: #00008A">PCAN_ERROR_BUSOFF</span> = 0x00010,
+    <span style="color: #00008A">PCAN_ERROR_ANYBUSERR</span> = (<span style="color: #00008A">PCAN_ERROR_BUSWARNING | PCAN_ERROR_BUSLIGHT</span> | <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> | <span style="color: #00008A">PCAN_ERROR_BUSOFF | PCAN_ERROR_BUSPASSIVE</span>),
+    <span style="color: #00008A">PCAN_ERROR_QRCVEMPTY</span> = 0x00020,
+    <span style="color: #00008A">PCAN_ERROR_QOVERRUN</span> = 0x00040,
+    <span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> = 0x00080,
+    <span style="color: #00008A">PCAN_ERROR_REGTEST</span> = 0x00100,
+    <span style="color: #00008A">PCAN_ERROR_NODRIVER</span> = 0x00200,
+<span style="color: #00008A">    PCAN_ERROR_HWINUSE</span> = 0x00400,
+<span style="color: #00008A">    PCAN_ERROR_NETINUSE</span> = 0x00800,
+<span style="color: #00008A">    PCAN_ERROR_ILLHW</span> = 0x01400,
+<span style="color: #00008A">    PCAN_ERROR_ILLNET</span> = 0x01800,
+<span style="color: #00008A">    PCAN_ERROR_ILLCLIENT</span> = 0x01C00,
+<span style="color: #00008A">    PCAN_ERROR_ILLHANDLE</span> = (<span style="color: #00008A">PCAN_ERROR_ILLHW</span> | <span style="color: #00008A">PCAN_ERROR_ILLNET</span> | <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span>),
+    <span style="color: #00008A">PCAN_ERROR_RESOURCE</span> = 0x02000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> = 0x04000,
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL</span> = 0x08000,
+    <span style="color: #00008A">PCAN_ERROR_UNKNOWN</span> = 0x10000,
+    <span style="color: #00008A">PCAN_ERROR_ILLDATA</span> = 0x20000,
+    <span style="color: #00008A">PCAN_ERROR_CAUTION</span> = 0x2000000,
+    <span style="color: #00008A">PCAN_ERROR_INITIALIZE</span> = 0x4000000,
+    <span style="color: #00008A">PCAN_ERROR_ILLOPERATION</span> = 0x8000000,
+}
+</pre></div></div>
+</div>
+<a name="56697375616C204261736963"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('56697375616C204261736963');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img56697375616C204261736963">Visual Basic</a></div>
+<div id="div56697375616C204261736963">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #575D94">&lt;Flags()&gt; _</span>
+<span style="color: #871F78">Public Enum</span> TPCANStatus As <span style="color: #0000FF">UInt32</span>
+    <span style="color: #00008A">PCAN_ERROR_OK</span> = &amp;H0
+    <span style="color: #00008A">PCAN_ERROR_XMTFULL</span> = &amp;H1
+    <span style="color: #00008A">PCAN_ERROR_OVERRUN</span> = &amp;H2
+    <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> = &amp;H4
+    <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> = &amp;H8
+    <span style="color: #00008A">PCAN_ERROR_BUSWARNING</span> = <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span>
+    <span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span> = &amp;H40000
+    <span style="color: #00008A">PCAN_ERROR_BUSOFF</span> = &amp;H10
+    <span style="color: #00008A">PCAN_ERROR_ANYBUSERR</span> = (<span style="color: #00008A">PCAN_ERROR_BUSWARNING </span><span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> <span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> <span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_BUSOFF </span><span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_BUSPASSIVE</span>)
+    <span style="color: #00008A">PCAN_ERROR_QRCVEMPTY</span> = &amp;H20
+    <span style="color: #00008A">PCAN_ERROR_QOVERRUN</span> = &amp;H40
+    <span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> = &amp;H80
+    <span style="color: #00008A">PCAN_ERROR_REGTEST</span> = &amp;H100
+    <span style="color: #00008A">PCAN_ERROR_NODRIVER</span> = &amp;H200
+<span style="color: #00008A">    PCAN_ERROR_HWINUSE</span> = &amp;H400
+<span style="color: #00008A">    PCAN_ERROR_NETINUSE</span> = &amp;H800
+<span style="color: #00008A">    PCAN_ERROR_ILLHW</span> = &amp;H1400
+<span style="color: #00008A">    PCAN_ERROR_ILLNET</span> = &amp;H1800
+<span style="color: #00008A">    PCAN_ERROR_ILLCLIENT</span> = &amp;H1C00
+    <span style="color: #00008A">PCAN_ERROR_ILLHANDLE</span> = (<span style="color: #00008A">PCAN_ERROR_ILLHW</span> <span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_ILLNET</span> <span style="color: #871F78">Or</span> <span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span>)
+    <span style="color: #00008A">PCAN_ERROR_RESOURCE</span> = &amp;H2000
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> = &amp;H4000
+    <span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL</span> = &amp;H8000
+    <span style="color: #00008A">PCAN_ERROR_UNKNOWN</span> = &amp;H10000
+    <span style="color: #00008A">PCAN_ERROR_ILLDATA</span> = &amp;H20000
+    <span style="color: #00008A">PCAN_ERROR_CAUTION</span> = &amp;H2000000
+    <span style="color: #00008A">PCAN_ERROR_INITIALIZE</span> = &amp;H4000000
+    <span style="color: #00008A">PCAN_ERROR_ILLOPERATION</span> = &amp;H8000000
+<span style="color: #871F78">End Enum</span>
+</pre></div></div>
+</div>
+<a name="507974686F6E"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('507974686F6E');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img507974686F6E">Python</a></div>
+<div id="div507974686F6E">
+<div class="Element101"><div class="Element100"><pre class="Element100">TPCANStatus =<span style="color: #00008A"> </span><span style="color: #0000FF">int</span>
+
+<span style="color: #00008A">PCAN_ERROR_OK</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_XMTFULL</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00001<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_OVERRUN</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00002
+<span style="color: #00008A">PCAN_ERROR_BUSLIGHT</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00004<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_BUSHEAVY</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00008<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_BUSWARNING = </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(PCAN_ERROR_BUSHEAVY)</span>
+<span style="color: #00008A">PCAN_ERROR_BUSPASSIVE = </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x40000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_BUSOFF</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00010<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_ANYBUSERR</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(PCAN_ERROR_BUSWARNING | PCAN_ERROR_BUSLIGHT </span>|<span style="color: #00008A"> PCAN_ERROR_BUSHEAVY</span> | <span style="color: #00008A">PCAN_ERROR_BUSOFF | PCAN_ERROR_BUSPASSIVE)</span>
+<span style="color: #00008A">PCAN_ERROR_QRCVEMPTY</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00020<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_QOVERRUN</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00040<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_QXMTFULL</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00080<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_REGTEST</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00100<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_NODRIVER</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00200<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_HWINUSE</span> = <span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00400)
+<span style="color: #00008A">PCAN_ERROR_NETINUSE</span> = <span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x00800)
+<span style="color: #00008A">PCAN_ERROR_ILLHW</span> = <span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x01400)
+<span style="color: #00008A">PCAN_ERROR_ILLNET</span> = <span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x01800)
+<span style="color: #00008A">PCAN_ERROR_ILLCLIENT</span> = <span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x01C00)
+<span style="color: #00008A">PCAN_ERROR_ILLHANDLE</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(PCAN_ERROR_ILLHW </span>|<span style="color: #00008A"> PCAN_ERROR_ILLNET</span> | <span style="color: #00008A">PCAN_ERROR_ILLCLIENT)</span>
+<span style="color: #00008A">PCAN_ERROR_RESOURCE</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x02000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_ILLPARAMTYPE</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x04000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_ILLPARAMVAL</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x08000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_UNKNOWN</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x10000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_ILLDATA</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x20000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_CAUTION</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x2000000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_INITIALIZE</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x4000000<span style="color: #00008A">)</span>
+<span style="color: #00008A">PCAN_ERROR_ILLOPERATION</span> =<span style="color: #00008A"> </span><span style="color: #0000FF">TPCANStatus</span><span style="color: #00008A">(</span>0x8000000<span style="color: #00008A">)</span>
+
+</pre></div></div>
+</div>
+<a name="52656D61726B73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52656D61726B73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52656D61726B73">Remarks</a></div>
+<div id="div52656D61726B73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Note that the values of the different PCAN-Status definitions are able to be bitwise combined. In some cases it is possible to get more than one error code as result of calling a function.&nbsp;</p>
+<p class="Element10">
+<span style="color: #FF0000"><strong>*Note</strong></span> that the values of PCAN_ERROR_INITIALIZE and PCAN_ERROR_ILLOPERATION were changed!&nbsp;</p>
+<p class="Element10">
+PCAN_ERROR_INITIALIZE changed from 0x40000 to 0x4<span style="color: #FF0000"><strong>00</strong></span>0000&nbsp;</p>
+<p class="Element10">
+PCAN_ERROR_ILLOPERATION changed from 0x80000 to 0x8<span style="color: #FF0000"><strong>00</strong></span>0000</p></div>
+</div>
+</div>
+<a name="56616C756573"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('56616C756573');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img56616C756573">Values</a></div>
+<div id="div56616C756573">
+<div class="Element11">
+<div class="Element10">
+<div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="20%">
+<div class="Element66">
+Name&nbsp;</div></td><td class="Element75" valign="top" width="10%">
+<div class="Element76">
+Value&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_OK&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00000 (000000)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+No error. Success.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_XMTFULL&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00001 (000001)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Transmit buffer in CAN controller is full.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_OVERRUN&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00002 (000002)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+CAN controller was read too late.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_BUSLIGHT&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00004 (000004)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Bus error: an error counter reached the 'light' limit.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_BUSHEAVY&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00008 (000008)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Bus error: an error counter reached the 'heavy' limit.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_BUSWARNING&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00008 (000008)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Bus error: an error counter reached the 'warning' limit.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_BUSPASSIVE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x40000 (262144)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Bus error: the CAN controller is error passive.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_BUSOFF&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00010 (000016)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Bus error: the CAN controller is in bus-off state.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ANYBUSERR&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x4001C (262172)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Mask for all bus errors.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_QRCVEMPTY&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00020 (000032)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Receive queue is empty.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_QOVERRUN&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00040 (000064)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Receive queue was read too late.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_QXMTFULL&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00080 (000128)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Transmit queue is full.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_REGTEST&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00100 (000256)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Test of the CAN controller hardware registers failed (no hardware found).&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_NODRIVER&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00200 (000512)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Driver not loaded.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_HWINUSE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00400 (001024)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+PCAN-Hardware already in use by a PCAN-Net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_NETINUSE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x00800 (002048)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+A PCAN-Client is already connected to the PCAN-Net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLHW&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x01400 (005120)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+PCAN-Hardware handle is invalid.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLNET&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x01800 (006144)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+PCAN-Net handle is invalid.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLCLIENT&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x01C00 (007168)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+PCAN-Client handle is invalid.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLHANDLE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x01C00 (007168)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Mask for all handle errors.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_RESOURCE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x02000 (008192)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Resource (FIFO, Client, timeout) cannot be created.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLPARAMTYPE&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x04000 (016384)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Invalid parameter.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLPARAMVAL&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x08000 (032768)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Invalid parameter value.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_UNKNOWN&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x10000 (065536)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Unknown error&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLDATA&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x20000 (131072)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Invalid data, function, or action.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_CAUTION&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x2000000 (33554432)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Operation succeeded but with irregularities.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_INITIALIZE<span style="color: #FF0000"><strong>*</strong></span>&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x4000000 (67108864)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Channel is not initialized.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%">
+<div class="Element68">
+PCAN_ERROR_ILLOPERATION<span style="color: #FF0000"><strong>*</strong></span>&nbsp;</div></td><td class="Element77" valign="top" width="10%">
+<div class="Element78">
+0x8000000 (134217728)&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Invalid operation.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: TPCANStatus');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

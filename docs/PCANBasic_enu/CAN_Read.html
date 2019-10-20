@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>CAN_Read</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="CAN_GetStatus.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Functions.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="CAN_ReadFD.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+CAN_Read</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Reads a CAN message from the receive queue of a PCAN Channel.</p></div>
+</div>
+<a name="53796E746178"></a><div class="Element14">
+Syntax</div>
+<div class="Element11">
+<div class="Element10">
+</div>
+</div>
+<a name="432B2B"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('432B2B');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img432B2B">C++</a></div>
+<div id="div432B2B">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span> <span style="color: #871F78">__stdcall</span> CAN_Read(
+        <span style="color: #0000FF"><a href="TPCANHandle.html">TPCANHandle</a></span> <span style="color: #00008A">Channel</span>,
+        <span style="color: #0000FF"><a href="TPCANMsg.html">TPCANMsg</a></span>* <span style="color: #00008A">MessageBuffer</span>,
+        <span style="color: #0000FF"><a href="TPCANTimestamp.html">TPCANTimestamp</a>*</span> <span style="color: #00008A">TimestampBuffer</span>
+);
+</pre></div></div>
+</div>
+<a name="506172616D6574657273"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('506172616D6574657273');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img506172616D6574657273">Parameters</a></div>
+<div id="div506172616D6574657273">
+<div class="Element11">
+<div class="Element10">
+<div class="Element252">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element240" valign="top" width="50%">
+<div class="Element241">
+Parameters&nbsp;</div></td><td class="Element244" valign="top" width="50%">
+<div class="Element245">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element242" valign="top" width="50%">
+<div class="Element243">
+Channel&nbsp;</div></td><td class="Element246" valign="top" width="50%">
+<div class="Element247">
+The handle of a PCAN Channel (see <a href="TPCANHandle.html">TPCANHandle</a>).&nbsp;</div></td></tr><tr>
+<td class="Element242" valign="top" width="50%">
+<div class="Element243">
+MessageBuffer&nbsp;</div></td><td class="Element246" valign="top" width="50%">
+<div class="Element247">
+A <a href="TPCANMsg.html">TPCANMsg</a> buffer to store the CAN message.&nbsp;</div></td></tr><tr>
+<td class="Element242" valign="top" width="50%">
+<div class="Element243">
+TimestampBuffer&nbsp;</div></td><td class="Element246" valign="top" width="50%">
+<div class="Element247">
+A <a href="TPCANTimestamp.html">TPCANTimestamp</a> buffer to get the reception time of the message.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="52657475726E73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52657475726E73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52657475726E73">Returns</a></div>
+<div id="div52657475726E73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The return value is a <a href="TPCANStatus.html">TPCANStatus</a> code. PCAN_ERROR_OK is returned on success. The typical errors in case of failure are: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table4">
+<tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_ILLPARAMVAL:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates that the parameters passed to the function are invalid. Check the value of the MessageBuffer; it should point to a <a href="TPCANMsg.html">TPCANMsg</a> structure.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_INITIALIZE:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates that the given PCAN channel was not found in the list of initialized channels of the calling application.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_BUSLIGHT:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates a bus error within the given PCAN Channel. The hardware is in bus-light status.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_BUSHEAVY:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates a bus error within the given PCAN Channel. The hardware is in bus-heavy status.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_BUSOFF:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates a bus error within the given PCAN Channel. The hardware is in bus-off status.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_QRCVEMPTY:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates that the receive queue of the Channel is empty.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="52656D61726B73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52656D61726B73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52656D61726B73">Remarks</a></div>
+<div id="div52656D61726B73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Specifying the value of NULL for the parameter TimetampBuffer causes reading a message without timestamp, when the reception time is not desired. An &quot;Illegal Parameter Value&quot; error will be returned when the MessageBuffer is wrong or the TimestampBuffer contains a value different than NULL and provokes an internal error, eg. accessing its memory.&nbsp;</p>
+<p class="Element10">
+The use of CAN_Read and <a href="CAN_ReadFD.html">CAN_ReadFD</a> are mutually exclusive. The PCAN Channel passed to this function <strong>must be </strong>initialized using <a href="CAN_Initialize.html">CAN_Initialize</a> (<strong>class-method</strong>: <a href="Initialize.html">Initialize</a>). Otherwise the error PCAN_ERROR_ILLOPERATION is returned.&nbsp;</p>
+<p class="Element10">
+The CAN_Read function returns received messages or status messages from the receive queue. It is important to call CAN_Read repeatedly until the queue is empty. In case there are no more messages in queue, the value PCAN_ERROR_QRCVEMPTY is returned. The error code PCAN_ERROR_QRCVEMPTY is also returned if the reception of messages is disabled. See <a href="TPCANParameter.html#RECEIVE_STATUS">Receive Status Parameter</a> for more information.&nbsp;</p>
+<p class="Element10">
+The receive queue can contain up to <strong>32767</strong> messages.&nbsp;</p>
+<p class="Element10">
+There are two possibilities for reading messages from the receive queue of a Channel:&nbsp;</p>
+<p class="Element10">
+<i>Time-Triggered Reading</i>: Consists in periodically calls to the CAN_Read function. Typically, an application start a timer that every 50 or 100 milliseconds check for messages, calling the CAN_Read function in a loop until the value of PCAN_ERROR_QRCVEMTY or another error condition is reached.&nbsp;</p>
+<p class="Element10">
+<i>Event-Triggered Reading</i>: Consists in reacting to a notification sent by the PCAN driver to a registered application, when a message is received and inserted in its receive queue. See <a href="Using_Events.html">Using Events</a> to obtain more information about reading with events.&nbsp;</p>
+<p class="Element10">
+<strong>About bus errors / Status messages</strong>&nbsp;</p>
+<p class="Element10">
+If a bus-off error occur, an application cannot use the channel to communicate anymore, until the CAN controller is reset. With PCAN-Basic it is not possible to reset the CAN controller through a function directly. Consider using the PCAN-Basic property <A href="TPCANParameter.html#BUSOFF_AUTORESET">PCAN_BUSOFF_AUTORESET</A> which instructs the API to automatically reset the CAN controller when a bus-off state is detected.&nbsp;</p>
+<p class="Element10">
+Another way to reset errors like BUSOFF, BUSHEAVY, and BUSLIGTH, is to <a href="CAN_Uninitialize.html">uninitialize</a> and <a href="CAN_Initialize.html">initialise</a> again the channel used. This causes a hardware reset.&nbsp;</p>
+<p class="Element10">
+The message type (see <a href="TPCANMessageType.html">TPCANMessageType</a>) of a CAN message indicates if the message is a 11-bit, 29-bit, RTR, Error, or Status message. This value should be checked every time a message has been read successfully.&nbsp;</p>
+<p class="Element10">
+If the bit <a href="TPCANStatus.html">PCAN_MESSAGE_ERRFRAME</a> is set in the <a href="TPCANMsg.html">TPCANMsg.MSGTYPE</a> field, the message is an Error frame (see <a href="Error_Frames.html">Error Frames</a>).&nbsp;</p>
+<p class="Element10">
+If the bit <a href="TPCANStatus.html">PCAN_MESSAGE_STATUS</a> is set in the <a href="TPCANMsg.html">TPCANMsg.MSGTYPE</a> field, the message is a Status message. The ID and LEN fields do not contain valid data. The first 4 data bytes of the message contain the Error Code. The MSB of the Error Code is in data byte 0, the LSB is in data byte 3. If a status message was read the return value of <strong>CAN_Read</strong> is also the error code.&nbsp;</p>
+<p class="Element10">
+Examples: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table5">
+<tr>
+<td class="Element65" valign="top" width="6%">
+<div class="Element66">
+Data0&nbsp;</div></td><td class="Element65" valign="top" width="6%">
+<div class="Element66">
+Data1&nbsp;</div></td><td class="Element65" valign="top" width="6%">
+<div class="Element66">
+Data2&nbsp;</div></td><td class="Element65" valign="top" width="6%">
+<div class="Element66">
+Data3&nbsp;</div></td><td class="Element65" valign="top" width="11%">
+<div class="Element66">
+Error&nbsp;</div></td><td class="Element65" valign="top" width="17%">
+<div class="Element66">
+Error Code&nbsp;</div></td><td class="Element65" valign="top" width="48%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+02h&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+PCAN_ERROR_OVERRUN&nbsp;</div></td><td class="Element67" valign="top" width="17%">
+<div class="Element68">
+0002h&nbsp;</div></td><td class="Element67" valign="top" width="48%">
+<div class="Element68">
+CAN controller has been read out too late.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+04h&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+PCAN_ERROR_BUSLIGHT&nbsp;</div></td><td class="Element67" valign="top" width="17%">
+<div class="Element68">
+0004h&nbsp;</div></td><td class="Element67" valign="top" width="48%">
+<div class="Element68">
+Bus error: An error counter has reached the 'Light' limit.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+08h&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+PCAN_ERROR_BUSHEAVY&nbsp;</div></td><td class="Element67" valign="top" width="17%">
+<div class="Element68">
+0008h&nbsp;</div></td><td class="Element67" valign="top" width="48%">
+<div class="Element68">
+Bus error: An error counter has reached the 'Heavy' limit.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+00h&nbsp;</div></td><td class="Element67" valign="top" width="6%">
+<div class="Element68">
+10h&nbsp;</div></td><td class="Element67" valign="top" width="11%">
+<div class="Element68">
+PCAN_ERROR_BUSOFF&nbsp;</div></td><td class="Element67" valign="top" width="17%">
+<div class="Element68">
+0010h&nbsp;</div></td><td class="Element67" valign="top" width="48%">
+<div class="Element68">
+Bus error: CAN Controller is in 'Bus Off' state.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="4578616D706C65"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('4578616D706C65');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4578616D706C65">Example</a></div>
+<div id="div4578616D706C65">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The following example shows the use of CAN_Read on the channel PCAN_USBBUS1. In case of failure, the returned code will be translated to a text (according with the operating system language) in English, German, Italian, French or Spanish, and it will be shown to the user.&nbsp;</p>
+<p class="Element10">
+Note: It is assumed that the channel was already initialized and that the following code is an OnTimer event handler function.&nbsp;</p>
+<p class="Element10">
+<strong>C++:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">
+<span style="color: #0000FF"><a href="TPCANMsg.html">TPCANMsg</a></span><span style="color: #00008A"> msg;</span>
+<span style="color: #0000FF"><a href="TPCANTimestamp.html">TPCANTimestamp</a></span><span style="color: #00008A"> timestamp;</span>
+<span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span><span style="color: #00008A"> result;</span>
+<span style="color: #0000FF">char</span><span style="color: #00008A"> strMsg[256];</span>
+
+<span style="color: #871F78">do</span>
+<span style="color: #00008A">{</span>
+<span style="color: #008000">    // Check the receive queue for new messages</span>
+<span style="color: #008000">    //</span>
+<span style="color: #00008A">    result = </span>CAN_Read<span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_USBBUS1,&amp;msg,&amp;timestamp</span><span style="color: #00008A">);</span>
+<span style="color: #00008A">    </span><span style="color: #871F78">if</span><span style="color: #00008A">(result != PCAN_ERROR_QRCVEMPTY)</span>
+<span style="color: #00008A">    {</span>
+<span style="color: #008000">        // Process the received message</span>
+<span style="color: #008000">        //</span>
+<span style="color: #00008A">        MessageBox(</span><span style="color: #A31515">&quot;A message was received&quot;</span><span style="color: #00008A">);</span>
+<span style="color: #00008A">        ProcessMessage(msg)</span>
+<span style="color: #00008A">    }</span>
+<span style="color: #00008A">    </span><span style="color: #871F78">else</span>
+<span style="color: #00008A">    {</span>
+<span style="color: #008000">        // An error occurred, get a text describing the error and show it</span>
+<span style="color: #008000">        // and handle the error</span>
+<span style="color: #008000">        //</span>
+<span style="color: #00008A">        </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">        MessageBox(strMsg);</span>
+<span style="color: #008000">        // Here can be decided if the loop has to be  terminated (eg. the bus</span>
+<span style="color: #008000">        // status is  bus-off)</span>
+<span style="color: #008000">        //</span>
+<span style="color: #00008A">        HandleReadError(result);</span>
+<span style="color: #00008A">    }</span>
+<span style="color: #008000">// Try to read a message from the receive queue of the PCAN-USB, Channel 1,</span>
+<span style="color: #008000">// until the queue is empty</span>
+<span style="color: #008000">//</span>
+<span style="color: #00008A">}</span><span style="color: #871F78">while</span><span style="color: #00008A">((result &amp; PCAN_ERROR_QRCVEMPTY) != PCAN_ERROR_QRCVEMPTY);</span>
+</pre></div></div>
+</div>
+</div>
+</div>
+<a name="53656520416C736F"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('53656520416C736F');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img53656520416C736F">See Also</a></div>
+<div id="div53656520416C736F">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<a href="CAN_Write.html">CAN_Write</a>&nbsp;</p>
+<p class="Element10">
+<a href="Using_Events.html">Using Events</a>&nbsp;</p>
+<p class="Element10">
+<a href="Error_Frames.html">Error Frames</a>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<strong>Class-method Version</strong>: <a href="Read.html">Read</a></p></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: CAN_Read');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>
