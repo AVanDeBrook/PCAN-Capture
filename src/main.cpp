@@ -17,6 +17,6 @@ int main(void)
         cout << message << endl;
     }
 
-    CAN_Uninitialize(PCAN_USBBUS1);
+    CAN_Uninitialize(PCAN_NONEBUS);
     return 0;
 }
