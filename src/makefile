@@ -4,4 +4,4 @@ INC = -I./lib/ -I.
 DLL = -lPCANBasic
 
 can_cap.exe: main.cpp
-	$(CC) $^ -o $@ $(LIB) $(DLL) $(INC)
+	$(CC) -o $@ $^ $(LIB) $(DLL) $(INC)
