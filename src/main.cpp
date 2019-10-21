@@ -90,7 +90,7 @@ void Display_Voltages(void)
 {
     for (int i = 0; i < 6; i++) {
         printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[0]);
-        printf("Cell %d: %d\n mV", i, cell_voltages[i].voltages[1]);
-        printf("Cell %d: %d\n mV", i, cell_voltages[i].voltages[2]);
+        printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[1]);
+        printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[2]);
     }
 }
