@@ -293,11 +293,11 @@
 #define TPCANBitrateFD               LPSTR  // Represents a PCAN-FD bit rate string
 #define TPCANTimestampFD             UINT64 // Represents a timestamp of a received PCAN FD message
 
-typedef char BYTE;
-typedef long long DWORD;
+/*typedef signed char BYTE;
+typedef unsigned long DWORD;
 typedef int WORD;
 typedef unsigned long long UINT64;
-typedef char * LPSTR;
+typedef char * LPSTR;*/
 
 ////////////////////////////////////////////////////////////
 // Structure definitions

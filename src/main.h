@@ -4,8 +4,9 @@
 #include <stdint.h>
 
 /****** Prototypes ******/
-void Process_Voltages(void);
-void Display_Voltages(void);
+void process_voltages(void);
+void display_voltages(void);
+void print_message_data(void);
 
 /****** Data Structures ******/
 typedef struct Voltage_Group {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include "PCANBasic.h"
 #include "main.h"
 
@@ -20,6 +21,14 @@ int main(void)
     if (retval == PCAN_ERROR_OK) {
         cout << "PCAN USB Bus Initialized" << endl;
     } else {
+        CAN_GetErrorText(retval, 0, message);
+        cout << message << endl;
+        goto SYS_EXIT;
+    }
+
+    retval = CAN_SetValue(PCAN_USBBUS1, PCAN_RECEIVE_EVENT, message, 256);
+
+    if (retval != PCAN_ERROR_OK) {
         CAN_GetErrorText(retval, 0, message);
         cout << message << endl;
         goto SYS_EXIT;
@@ -53,8 +62,10 @@ int main(void)
         //
         // According to the API docs the filtering mechanism does not
         // guarantee only messages in this range.
-        if (can_message.ID >= 0x200 && can_message.ID <= 0x205) {
-            Process_Voltages();
+        if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x205) {
+            //print_message_data();
+            process_voltages();
+            display_voltages();
         }
     }
 
@@ -63,10 +74,10 @@ int main(void)
         return 0;
 }
 
-void Process_Voltages(void)
+void process_voltages(void)
 {
     // Each cell voltage is 16 bits. The first byte is a status byte.
-    uint16_t voltage_calcs[3] = {0};
+    uint16_t voltage_calcs[3] = {0};    
     // Voltages are transmitted in little endian byte order
     // this converts them to "normal" values.
     //
@@ -86,11 +97,20 @@ void Process_Voltages(void)
     }
 }
 
-void Display_Voltages(void)
+void display_voltages(void)
 {
     for (int i = 0; i < 6; i++) {
-        printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[0]);
-        printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[1]);
-        printf("Cell %d: %d mV\n", i, cell_voltages[i].voltages[2]);
+        printf("Module %d: Cell 0: %d mV\n", i, cell_voltages[i].voltages[0]);
+        printf("Module %d: Cell 1: %d mV\n", i, cell_voltages[i].voltages[1]);
+        printf("Modeul %d: Cell 2: %d mV\n", i, cell_voltages[i].voltages[2]);
     }
+}
+
+void print_message_data(void)
+{
+    printf("CAN Message data:");
+    for (int i = 0; i < 8; i++) {
+        printf("%02X ", can_message.DATA[i]);
+    }
+    printf("\n");
 }
