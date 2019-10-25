@@ -34,8 +34,9 @@ int main(void)
         goto SYS_EXIT;
     }
 
-    // Filter messages with ID 0x200 - 0x205
-    retval = CAN_FilterMessages(PCAN_USBBUS1, 0x200, 0x205, PCAN_MESSAGE_STANDARD);
+    // Filter messages with ID 0x200 - 0x203
+    // The simulated battery is only 12 cells, 4 messages x 3 cells per message = 12 cells
+    retval = CAN_FilterMessages(PCAN_USBBUS1, MOD_0_CELL_BASE, MOD_0_CELL_BASE + 3, PCAN_MESSAGE_STANDARD);
 
     // Error handling
     if (retval == PCAN_ERROR_OK) {
@@ -56,6 +57,9 @@ int main(void)
             CAN_GetErrorText(retval, 0, message);
             cout << message << endl;
             goto SYS_EXIT;
+        } else {
+            CAN_GetErrorText(retval, 0, message);
+            cout << message << endl;
         }
 
         // Paranoia check to make sure the message IDs are correct.
@@ -67,6 +71,8 @@ int main(void)
             process_voltages();
             display_voltages();
         }
+
+        //Sleep(1000);
     }
 
     SYS_EXIT:
@@ -77,7 +83,7 @@ int main(void)
 void process_voltages(void)
 {
     // Each cell voltage is 16 bits. The first byte is a status byte.
-    uint16_t voltage_calcs[3] = {0};    
+    uint16_t voltage_calcs[3] = {0};
     // Voltages are transmitted in little endian byte order
     // this converts them to "normal" values.
     //
@@ -100,9 +106,9 @@ void process_voltages(void)
 void display_voltages(void)
 {
     for (int i = 0; i < 6; i++) {
-        printf("Module %d: Cell 0: %d mV\n", i, cell_voltages[i].voltages[0]);
-        printf("Module %d: Cell 1: %d mV\n", i, cell_voltages[i].voltages[1]);
-        printf("Modeul %d: Cell 2: %d mV\n", i, cell_voltages[i].voltages[2]);
+        for (int j = 0; j < 3; j++) {
+            printf("Cell %d: %d V\n", ((3*i) + j), (cell_voltages[i].voltages[j] / 1000));
+        }
     }
 }
 
@@ -113,4 +119,22 @@ void print_message_data(void)
         printf("%02X ", can_message.DATA[i]);
     }
     printf("\n");
+}
+
+void input_trigger(UserInput_t user_input)
+{
+    switch (user_input) {
+    case SHOW_MENU:
+        break;
+    case READ_VOLTAGES:
+        if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x205) {
+            process_voltages();
+        }
+        break;
+    case PRINT_VOLTAGES:
+        //TODO: print_voltages();
+        break;
+    default:
+        break;
+    }
 }
