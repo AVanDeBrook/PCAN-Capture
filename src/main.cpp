@@ -7,7 +7,7 @@ using namespace std;
 
 TPCANMsg can_message; // CAN Message buffer
 TPCANTimestamp timestamp; // Timestamp buffer
-Voltage_Group_t cell_voltages[6]; // Data structure for cell voltages
+Voltage_Group_t cell_voltages[4]; // Data structure for cell voltages
 
 int main(void)
 {
