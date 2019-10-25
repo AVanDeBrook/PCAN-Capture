@@ -1,7 +1,6 @@
 CC = g++
-LIB = -L./lib/
-INC = -I./lib/ -I.
-DLL = -lPCANBasic
+LIB = -L../lib -lPCANBasic -I../lib
+INC = -I.
 
 can_cap.exe: main.cpp
-	$(CC) -g -o $@ $^ $(LIB) $(DLL) $(INC)
+	$(CC) -g -o $@ $^ $(LIB) $(INC)
