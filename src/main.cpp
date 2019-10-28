@@ -67,7 +67,7 @@ int main(void)
         //
         // According to the API docs the filtering mechanism does not
         // guarantee only messages in this range.
-        if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x205) {
+        if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x203) {
             //print_message_data();
             process_voltages();
             display_voltages();
