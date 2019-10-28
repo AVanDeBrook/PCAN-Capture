@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>PCAN-API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="PCAN-Light.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Additional_Information.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="Error_Frames.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+PCAN-API</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Also called CanApi4 interface, is a synonym for CAN Application Programming Interface (version 2) and is a comprehensively programming interface to the PCAN system of the company PEAK-System Technik GmbH. This interface is more comprehensive than PCAN-Basic.&nbsp;</p>
+<p class="Element10">
+Important difference to PCAN-Basic:</p>
+<ul class="Element630">
+<li class="Element600">Transmit a CAN message at a fixed point of time.</li>
+<li class="Element600">Several application programs could be connected to one PCAN-PC hardware.</li>
+<li class="Element600">Detailed information to PCAN-PC hardware and the PCAN system (PCAN net and PCAN client).</li>
+<li class="Element600">The PCAN client is connected via the net to the PCAN-PC hardware.</li>
+</ul><p class="Element10">
+The following text is a short overview to the CanApi2 functions. The functions itself can be categorized as follows:</p></div>
+</div>
+<a name="436F6E74726F6C"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('436F6E74726F6C');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img436F6E74726F6C">Control</a></div>
+<div id="div436F6E74726F6C">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+ Register and remove functions for nets and hardware. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="30%">
+<div class="Element66">
+Function&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+CloseAll&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Disconnects all hardware, nets, and clients.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RegisterHardware&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Registers a Not-Plug-and-Play CAN hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RegisterHardwarePCI&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Registers a PCI CAN hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RegisterNet&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Defines of a PCAN net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RemoveHardware&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Removes and deactivates CAN hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RemoveNet&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Removes a PCAN net.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="436F6E66696775726174696F6E"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('436F6E66696775726174696F6E');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img436F6E66696775726174696F6E">Configuration</a></div>
+<div id="div436F6E66696775726174696F6E">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+ Configuration functions for nets and hardware. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="30%">
+<div class="Element66">
+Function&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetDeviceName&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Sets the PCAN device to be used for subsequent CanApi2 function calls.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetDriverParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures a driver parameter, eg. the size of the receive or transmit buffer.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetHwParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures a hardware parameter, eg.<br>- the PEAK serial number,<br>- and additional parameters for the PCAN-USB hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetNetParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures net parameter.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="436C69656E74"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('436C69656E74');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img436C69656E74">Client</a></div>
+<div id="div436C69656E74">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+ Functions for the management of the clients. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="30%">
+<div class="Element66">
+Function&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+ConnectToNet&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Connects a client to a PCAN net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+DisconnectFromNet&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Disconnects a client from a PCAN net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RegisterClient&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Registers an application as PCAN client.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RegisterMsg&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Expands the reception filter of a client.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RemoveAllMsgs&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Resets the filter of a Client for a connected Net.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+RemoveClient&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Removes a client from the driver.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+ResetClient&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Resets the receive and transmit queue of a client.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+ResetHardware&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Resets a CAN hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetClientFilter&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures the reception filter of a client.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetClientFilterEx&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures the reception filter of a client&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+SetClientParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Configures a client parameter, eg.<br>- self-receive mode of transmitted messages.<br>- improve the accuracy of the reception filter.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="436F6D6D756E69636174696F6E"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('436F6D6D756E69636174696F6E');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img436F6D6D756E69636174696F6E">Communication</a></div>
+<div id="div436F6D6D756E69636174696F6E">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+ Functions for the data interchange over the CAN bus. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="30%">
+<div class="Element66">
+Function&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+Read&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Reads a number of CAN_*-records from the client's receive queue. Records are CAN messages, error events, and other information.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+Write&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Writes a number of CAN messages or other commands into the transmit queue of a client.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="496E666F726D6174696F6E"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('496E666F726D6174696F6E');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img496E666F726D6174696F6E">Information</a></div>
+<div id="div496E666F726D6174696F6E">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+ Functions for the information about clients, nets, drivers, and hardware. </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table0">
+<tr>
+<td class="Element65" valign="top" width="30%">
+<div class="Element66">
+Function&nbsp;</div></td><td class="Element65" valign="top" width="70%">
+<div class="Element66">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetClientParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves client parameter, eg.<br>- total number of transmitted or received CAN messages,<br>- the PCAN driver name, PCAN net, or PCAN client name<br>- the number of received bits.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetDeviceName&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves the currently used PCAN device.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetDiagnosticText&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Reads the diagnostic text buffer.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetDriverName&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves the name of a PCAN device type.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetDriverParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves a driver parameter.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetErrText&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Translates an error code into a text.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetHwParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves a hardware parameter.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetNetParam&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Retrieves a net parameter.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetSystemTime&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Gets the system time.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+Msg2Text&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Creates a text form of a CAN message.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetHardwareStatus&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Detects the current status of a CAN hardware.&nbsp;</div></td></tr><tr>
+<td class="Element67" valign="top" width="30%">
+<div class="Element68">
+GetVersionInfo&nbsp;</div></td><td class="Element67" valign="top" width="70%">
+<div class="Element68">
+Reads version and copyright information from the driver.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: PCAN-API');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

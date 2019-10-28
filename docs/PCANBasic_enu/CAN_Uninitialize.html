@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>CAN_Uninitialize</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="CAN_InitializeFD.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Functions.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="CAN_Reset.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+CAN_Uninitialize</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Uninitializes a PCAN Channel.</p></div>
+</div>
+<a name="53796E746178"></a><div class="Element14">
+Syntax</div>
+<div class="Element11">
+<div class="Element10">
+</div>
+</div>
+<a name="432B2B"></a><div class="Element99">
+<a onclick="toggleVisibilityStored('432B2B');" class="a_Element99"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img432B2B">C++</a></div>
+<div id="div432B2B">
+<div class="Element101"><div class="Element100"><pre class="Element100"><span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span> <span style="color: #871F78">__stdcall</span> CAN_Uninitialize(
+        <span style="color: #0000FF"><a href="TPCANHandle.html">TPCANHandle</a></span> <span style="color: #00008A">Channel</span>
+);
+</pre></div></div>
+</div>
+<a name="506172616D6574657273"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('506172616D6574657273');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img506172616D6574657273">Parameters</a></div>
+<div id="div506172616D6574657273">
+<div class="Element11">
+<div class="Element10">
+<div class="Element252">
+<div class="TableDiv">
+<table cellspacing="0" class="Table3">
+<tr>
+<td class="Element240" valign="top" width="50%">
+<div class="Element241">
+Parameters&nbsp;</div></td><td class="Element244" valign="top" width="50%">
+<div class="Element245">
+Description&nbsp;</div></td></tr><tr>
+<td class="Element242" valign="top" width="50%">
+<div class="Element243">
+Channel&nbsp;</div></td><td class="Element246" valign="top" width="50%">
+<div class="Element247">
+The handle of a PCAN Channel (see <a href="TPCANHandle.html">TPCANHandle</a>).&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="52657475726E73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52657475726E73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52657475726E73">Returns</a></div>
+<div id="div52657475726E73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The return value is a <a href="TPCANStatus.html">TPCANStatus</a> code. PCAN_ERROR_OK is returned on success. The typical errors in case of failure are: </p><div class="Element63">
+<div class="TableDiv">
+<table cellspacing="0" class="Table4">
+<tr>
+<td class="Element67" valign="top" width="20%" style="border:none;">
+<div class="Element68">
+<strong>PCAN_ERROR_INITIALIZE:</strong>&nbsp;</div></td><td class="Element67" valign="top" width="80%" style="border:none;">
+<div class="Element68">
+Indicates that the given PCAN channel cannot be uninitialized because it was not found in the list of reserved channels of the calling application.&nbsp;</div></td></tr></table></div></div>
+</div>
+</div>
+</div>
+<a name="52656D61726B73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52656D61726B73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52656D61726B73">Remarks</a></div>
+<div id="div52656D61726B73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+A PCAN Channel can be released using one of this possibilities:&nbsp;</p>
+<p class="Element10">
+Single-Release: Given a handle of a PCAN Channel initialized before with <a href="CAN_Initialize.html">CAN_Initialize</a>. If the given channel can not be found then an error is returned.&nbsp;</p>
+<p class="Element10">
+Multiple-Release: Giving the handle value PCAN_NONEBUS which instructs the API to search for all channels initialized by the calling application and release them all. This option cause no errors if no hardware were uninitialized.&nbsp;</p>
+<p class="Element10">
+<strong><u>Transmit-queue at uninitialize:</u></strong> When a PCAN-Basic channel connection is terminated, the underlying hardware's transmit-queue will not immediately be discarded. PCAN-Basic will wait some time before finalizing, so that the hardware has time to send (or try to send) those unsent messages. When the time is up (amount 500 milliseconds), the rest of the messages in the queue (if any) are discarded.&nbsp;</p></div>
+</div>
+</div>
+<a name="4578616D706C65"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('4578616D706C65');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4578616D706C65">Example</a></div>
+<div id="div4578616D706C65">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+The following example shows the initialize and uninitialize (Single-Release) processes for the PCAN_PCIBUS1 channel. In case of failure, the returned code will be translated to a text (according with the operating system language) in English, German, Italian, French or Spanish, and it will be shown to the user.&nbsp;</p>
+<p class="Element10">
+Note: To see an example of Multiple-Release, see the <a href="CAN_Initialize.html">CAN_Initialize</a> function.&nbsp;</p>
+<p class="Element10">
+<strong>C++:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">
+<span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span><span style="color: #00008A"> result;</span>
+<span style="color: #0000FF">char</span><span style="color: #00008A"> strMsg[256];</span>
+
+<span style="color: #008000">// The PCI Channel is initialized</span>
+<span style="color: #008000">//</span>
+<span style="color: #00008A">result = </span><a href="CAN_Initialize.html">CAN_Initialize</a><span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_PCIBUS1</span><span style="color: #00008A">,</span><span style="color: #0000FF">PCAN_BAUD_500K</span><span style="color: #00008A">);</span>
+<span style="color: #871F78">if</span><span style="color: #00008A">(result != </span><span style="color: #0000FF">PCAN_ERROR_OK</span><span style="color: #00008A">)</span>
+<span style="color: #00008A">{</span>
+<span style="color: #008000">    // An error occurred, get a text describing the error and show it</span>
+<span style="color: #008000">    //</span>
+<span style="color: #00008A">    </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">    MessageBox(strMsg);</span>
+<span style="color: #00008A">}</span>
+<span style="color: #871F78">else</span>
+<span style="color: #00008A">    MessageBox(</span><span style="color: #A31515">&quot;PCAN-PCI (Ch-1) was initialized&quot;</span><span style="color: #00008A">);</span>
+
+....
+
+<span style="color: #008000">// The PCI Channel is released</span>
+<span style="color: #008000">//</span>
+<span style="color: #00008A">result = </span>CAN_Uninitialize<span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_PCIBUS1</span><span style="color: #00008A">);</span>
+<span style="color: #871F78">if</span><span style="color: #00008A">(result != </span><span style="color: #0000FF">PCAN_ERROR_OK</span><span style="color: #00008A">)</span>
+<span style="color: #00008A">{</span>
+<span style="color: #008000">    // An error occurred, get a text describing the error and show it</span>
+<span style="color: #008000">    //</span>
+<span style="color: #00008A">    </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">    MessageBox(strMsg);</span>
+<span style="color: #00008A">}</span>
+<span style="color: #871F78">else</span>
+<span style="color: #00008A">    MessageBox(</span><span style="color: #A31515">&quot;PCAN-PCI (Ch-1) was released&quot;</span><span style="color: #00008A">);</span>
+</pre></div></div>
+</div>
+</div>
+</div>
+<a name="53656520416C736F"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('53656520416C736F');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img53656520416C736F">See Also</a></div>
+<div id="div53656520416C736F">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<a href="CAN_Initialize.html">CAN_Initialize</a>&nbsp;</p>
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<strong>Class-method Version</strong>: <a href="Uninitialize.html">Uninitialize</a></p></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: CAN_Uninitialize');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Log File Generation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="Error_Frames.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Additional_Information.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><img src="btn_next_d.gif" border="0" alt="Next" title="Next"></div>
+</td></tr></table><div class="Element5">
+Log File Generation</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+In order to support debugging of problems, that can arise during CAN communication, PCAN-Basic can generate a log file, containing a protocol of all API function calls. There are two different ways to configure and activate this logging functionality:</p>
+<ul class="Element630">
+<li class="Element600">Using the <A href="#API">API</A>.</li>
+<li class="Element600">Using the <A href="#REG">Windows Registry</A>.</li>
+</ul></div>
+</div>
+<a name="4C6F6720636F6E66696775726174696F6E207573696E6720415049"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('4C6F6720636F6E66696775726174696F6E207573696E6720415049');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4C6F6720636F6E66696775726174696F6E207573696E6720415049">Log configuration using API</a></div>
+<div id="div4C6F6720636F6E66696775726174696F6E207573696E6720415049">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<A name="API"></A>In order to configure the Log functionality, PCAN-Basic API provides 3 parameters that can be configured with the function <a href="CAN_SetValue.html">CAN_SetValue</a> (<strong>class-method</strong>: <a href="SetValue.html">SetValue</a>). These parameters are:</p>
+<ul class="Element630">
+<li class="Element600"><a href="TPCANParameter.html#LOG_LOCATION">PCAN_LOG_LOCATION</a>, to set the location of the log file.</li>
+<li class="Element600"><a href="TPCANParameter.html#LOG_CONFIGURE">PCAN_LOG_CONFIGURE</a>, to configure the content of the log file.</li>
+<li class="Element600"><a href="TPCANParameter.html#LOG_STATUS">PCAN_LOG_STATUS</a>, to enable/disable logging.</li>
+</ul><div class="Element15">
+Example:</div>
+<p class="Element10">
+Within the following example, the PCAN-Basic is configured to log all possible information (LOG_FUNCTION_ALL = 0xFFFF), as well as to store the log file on the desktop of an user called &quot;admin&quot;.&nbsp;</p>
+<p class="Element10">
+<strong>C++:</strong> &nbsp;</p><div class="Element13"><div class="Element12"><pre class="Element12">
+<span style="color: #0000FF"><a href="TPCANStatus.html">TPCANStatus</a></span><span style="color: #00008A"> result;</span>
+<span style="color: #0000FF">char</span><span style="color: #00008A"> strMsg[</span><span style="color: #0000FF">MAX_PATH</span><span style="color: #00008A">];</span>
+
+
+<span style="color: #008000">// Configures the data in the log file.</span>
+<span style="color: #008000">//</span>
+<span style="color: #00008A">iBuffer = </span><span style="color: #0000FF">LOG_FUNCTION_ALL</span><span style="color: #00008A">;</span>
+<span style="color: #00008A">result = </span><a href="CAN_SetValue.html">CAN_SetValue</a><span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_NONEBUS, PCAN_LOG_CONFIGURE, </span><span style="color: #00008A">(</span><span style="color: #0000FF">void</span><span style="color: #00008A">*)&amp;iBuffer, </span><span style="color: #0000FF">sizeof</span><span style="color: #00008A">(iBuffer));</span>
+<span style="color: #871F78">if</span><span style="color: #00008A">(result != </span><span style="color: #0000FF">PCAN_ERROR_OK</span><span style="color: #00008A">)</span>
+<span style="color: #00008A">{</span>
+<span style="color: #00008A">    </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">    MessageBox(strMsg);</span>
+<span style="color: #00008A">}</span>
+
+<span style="color: #008000">// Configures the path of the log file.</span>
+<span style="color: #008000">//</span>
+<span style="color: #0000FF">char</span><span style="color: #00008A"> *buffer = </span><span style="color: #A31515">&quot;C:\\users\\admin\\desktop&quot;</span><span style="color: #00008A">;</span>
+<span style="color: #00008A">result = </span><a href="CAN_SetValue.html">CAN_SetValue</a><span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_NONEBUS</span><span style="color: #00008A">, </span><span style="color: #0000FF">PCAN_LOG_LOCATION</span><span style="color: #00008A">,buffer,</span><span style="color: #0000FF">strlen</span><span style="color: #00008A">(buffer));</span>
+<span style="color: #871F78">if</span><span style="color: #00008A">(result != </span><span style="color: #0000FF">PCAN_ERROR_OK</span><span style="color: #00008A">)</span>
+<span style="color: #00008A">{</span>
+<span style="color: #00008A">    </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">    MessageBox(strMsg);</span>
+<span style="color: #00008A">}</span>
+
+<span style="color: #008000">// Configures the status of the log file</span>
+<span style="color: #008000">//</span>
+<span style="color: #0000FF">int </span><span style="color: #00008A">iBuffer = </span><span style="color: #0000FF">PCAN_PARAMETER_ON</span><span style="color: #00008A">;</span>
+<span style="color: #00008A">result = </span><a href="CAN_SetValue.html">CAN_SetValue</a><span style="color: #00008A">(</span><span style="color: #0000FF">PCAN_NONEBUS</span><span style="color: #00008A">, </span><span style="color: #0000FF">PCAN_LOG_STATUS</span><span style="color: #00008A">, (</span><span style="color: #0000FF">void</span><span style="color: #00008A">*)&amp;iBuffer, </span><span style="color: #0000FF">sizeof</span><span style="color: #00008A">(iBuffer));</span>
+<span style="color: #871F78">if</span><span style="color: #00008A">(result != </span><span style="color: #0000FF">PCAN_ERROR_OK</span><span style="color: #00008A">)</span>
+<span style="color: #00008A">{</span>
+<span style="color: #00008A">    </span><a href="CAN_GetErrorText.html">CAN_GetErrorText</a><span style="color: #00008A">(result, 0, strMsg);</span>
+<span style="color: #00008A">    MessageBox(strMsg);</span>
+<span style="color: #00008A">}</span></pre></div></div>
+</div>
+</div>
+</div>
+<a name="4C6F6720636F6E66696775726174696F6E207573696E672057696E646F7773205265676973747279"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('4C6F6720636F6E66696775726174696F6E207573696E672057696E646F7773205265676973747279');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img4C6F6720636F6E66696775726174696F6E207573696E672057696E646F7773205265676973747279">Log configuration using Windows Registry</a></div>
+<div id="div4C6F6720636F6E66696775726174696F6E207573696E672057696E646F7773205265676973747279">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+&nbsp;</p>
+<p class="Element10">
+<A name="REG"></A>In order to enable the log file generation, the following registry key must be created: </p><div class="Element13"><div class="Element12"><pre class="Element12"><span style="color: #871F78"><strong>HKEY_CURRENT_USER</strong>\SOFTWARE\PEAK-System\PCAN-Basic\Log</span></pre></div></div>
+<p class="Element10">
+The existence of this key is analogous to use the function <a href="CAN_SetValue.html">CAN_SetValue</a> (<strong>class-method</strong>: <a href="SetValue.html">SetValue</a>) to set the parameter <a href="TPCANParameter.html#LOG_STATUS">PCAN_LOG_STATUS</a> to &quot;on&quot;. If this key is not present, then no log file is generated.</p><div class="Element15">
+Configuration:</div>
+<p class="Element10">
+If no further configuration is made, then the default values for <a href="TPCANParameter.html#LOG_LOCATION">PCAN_LOG_LOCATION</a>, and <a href="TPCANParameter.html#LOG_CONFIGURE">PCAN_LOG_CONFIGURE</a> are used. In order to configure the location and content of the log file, two registry values are used:&nbsp;</p>
+<p class="Element10">
+Flags: This is a DWORD value, that represents a logical <strong>OR </strong>operation between the values <a href="Parameter_Value_Definitions.html#LOG_CONFIG">LOG_FUNCTION_*</a> that are wanted to be included within the logging data. The value <a href="Parameter_Value_Definitions.html#LOG_CONFIG">LOG_FUNCTION_ALL</a> causes logging all possible information.&nbsp;</p>
+<p class="Element10">
+Path: This is a String value, that represents the path to a folder in the computer, where the log file will be created.</p><div class="Element15">
+Example:</div>
+<p class="Element10">
+Within the following example, the PCAN-Basic is configured to log function entries (LOG_FUNCTION_ENTRY = 1), function parameters (LOG_FUNCTION_PARAMETERS = 2), and function outs (LOG_FUNCTION_LEAVE = 4), as well as to store the log file on the desktop of an user called &quot;admin&quot;. </p><div class="Element13"><div class="Element12"><pre class="Element12"><span style="color: #871F78">[HKEY_CURRENT_USER\SOFTWARE\PEAK-System\PCAN-Basic\Log]</span>
+&quot;Flags&quot;=dword:00000007
+&quot;Path&quot;=&quot;C:\\Users\\admin\\desktop&quot;</pre></div></div>
+<div class="Element15">
+Remarks:</div>
+<p class="Element10">
+The registry key should be deleted (or renamed) after a debug session is done. If the key is leaved, all PCAN-Basic applications running under the same user account will remain writing data to their log files, generating in this way huge text files that consume hard-disk space unnecessarily.</p></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: Log File Generation');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

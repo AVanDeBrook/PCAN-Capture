@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Using Events</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="generator" content="Doc-O-Matic" />
+    <meta name="save" content="history" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="STYLESHEET" href="default.css" type="text/css" />
+
+<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body class="Element700" onload="onBodyLoad();" onmousedown="onBodyMouseDown();">
+<div id="persistenceDiv" style="display:none; behavior:url(#default#userData);"></div>
+
+<!-- Begin Popups -->
+
+<!-- End Popups -->
+
+<!-- Begin Page Header -->
+<div class="Element710" id="areafixed">
+<div class="Element92">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="33%">
+<div class="Element1">
+PCAN-Basic Documentation</div>
+</td><td width="34%">
+<div class="Element2">
+<a href="index.html"><img src="btn_globals_home_black.gif" border="0" alt="Home" title="Home" onmouseover="switchImage(this, 'btn_globals_home_black_hover.gif');" onmouseout="switchImage(this, 'btn_globals_home_black.gif');"></a></div>
+</td><td width="33%">
+<div class="Element90">
+<a href="Understanding_PCAN-Basic.html"><img src="btn_prev_black.gif" border="0" alt="Previous" title="Previous" onmouseover="switchImage(this, 'btn_prev_black_hover.gif');" onmouseout="switchImage(this, 'btn_prev_black.gif');"></a><a href="Introduction.html"><img src="btn_up_black.gif" border="0" alt="Up" title="Up" onmouseover="switchImage(this, 'btn_up_black_hover.gif');" onmouseout="switchImage(this, 'btn_up_black.gif');"></a><a href="License_Regulations.html"><img src="btn_next_black.gif" border="0" alt="Next" title="Next" onmouseover="switchImage(this, 'btn_next_black_hover.gif');" onmouseout="switchImage(this, 'btn_next_black.gif');"></a></div>
+</td></tr></table><div class="Element5">
+Using Events</div>
+</div>
+</div>
+
+<!-- End Page Header -->
+
+<!-- Begin Client Area -->
+<div class="Element720" id="areascroll">
+<div class="Element721">
+
+<!-- Begin Page Content -->
+<div class="Element58">
+<a name="53756D6D617279"></a><div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Event objects can be used to automatically notify a client on reception of a CAN message. This has following advantages:</p>
+<ul class="Element630">
+<li class="Element600">The client program doesn't need to check periodically for received messages any longer.</li>
+<li class="Element600">The response time on received messages is reduced.</li>
+</ul><p class="Element10">
+To use events, the client application must call the <a href="CAN_SetValue.html">CAN_SetValue</a> (<strong>class-method</strong>: <a href="SetValue.html">SetValue</a>) function to set the parameter PCAN_RECEIVE_EVENT. This parameter sets the handle for the event object. When receiving a message, the driver sets this event to the &quot;Signaled&quot; state.&nbsp;</p>
+<p class="Element10">
+Another thread must be started in the client application, which waits for the event to be signaled, using one of the Win32 synchronization functions (e.g. <a href="#" onclick="openExternalLink('http://msdn.microsoft.com/en-us/library/ms687032(VS.85).aspx');"><img src="indicator_external_link.gif" border="0" alt="" title="">WaitForSingleObject</a>) without increasing the processor load. After the event is signaled, the receive buffer of the client can be read with the <a href="CAN_Read.html">CAN_Read</a> (<strong>class method</strong>: <a href="Read.html">Read</a>) function, and the CAN messages can be processed.</p></div>
+</div>
+<a name="52656D61726B73"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('52656D61726B73');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img52656D61726B73">Remarks</a></div>
+<div id="div52656D61726B73">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+Tips for the creation of the event object:</p>
+<ul class="Element630">
+<li class="Element600">Creation of the event as &quot;auto-reset&quot;
+<ul class="Element631">
+<li class="Element601">Trigger mode &quot;set&quot; (default): After the first waiting thread has been released, the event object's state changes to non-signaled. Other waiting threads are not released. If no threads are waiting, the event object's state remains signaled.</li>
+<li class="Element601">Trigger mode &quot;pulse&quot;: After the first waiting thread has been released, the event object's state changes to non-signaled. Other waiting threads are not released. If no threads are waiting, or if no thread can be released immediately, the event object's state is simply set to non-signaled.</li>
+</ul></li>
+<li class="Element600">Creation of the event as &quot;manual-reset&quot;
+<ul class="Element631">
+<li class="Element601">Trigger mode &quot;set&quot; (default): The state of the event object remains signaled until it is set explicitly to the non-signaled state by the Win32 <a href="#" onclick="openExternalLink('http://msdn.microsoft.com/en-us/library/ms685081(VS.85).aspx');"><img src="indicator_external_link.gif" border="0" alt="" title="">ResetEvent</a> function. Any number of waiting threads, or threads that subsequently begin wait operations, can be released while the object's state remains signaled.</li>
+<li class="Element601">Trigger mode &quot;pulse&quot;: All waiting threads that can be released immediately are released. The event object's state is then reset to the non-signaled state. If no threads are waiting, or if no thread can be released immediately, the event object's state is simply set to non-signaled.</li>
+</ul></li>
+</ul></div>
+</div>
+</div>
+<a name="53656520416C736F"></a><div class="Element14">
+<a onclick="toggleVisibilityStored('53656520416C736F');" class="a_Element14"><img src="btn_collapse_2.gif" border="0" alt="" title="" id="img53656520416C736F">See Also</a></div>
+<div id="div53656520416C736F">
+<div class="Element11">
+<div class="Element10">
+<p class="Element10">
+<a href="CAN_SetValue.html">CAN_SetValue</a> (<strong>class-method</strong>: <a href="SetValue.html">SetValue</a>)&nbsp;</p>
+<p class="Element10">
+<a href="CAN_Read.html">CAN_Read</a> (<strong>class-method</strong>: <a href="Read.html">Read</a>)&nbsp;</p></div>
+</div>
+</div>
+</div>
+<!-- End Page Content -->
+
+<!-- Begin Page Footer -->
+<div class="Element93">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr><td width="100%">
+<div class="Element3">
+Copyright © 2019. PEAK-System Technik GmbH. All rights reserved.</div>
+</td></tr><tr><td width="100%">
+<div class="Element97">
+Send <a href="#" onclick="sendFeedback('support@peak-system.com', 'PCAN-Basic Documentation Feedback', 'Project: PCAN-Basic Documentation%0ATopic ID: Using Events');"> feedback </a> to this documentation</div>
+</td></tr></table></div>
+
+<!-- End Page Footer -->
+</div>
+</div>
+
+<!-- End Client Area -->
+</body></html>

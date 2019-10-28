@@ -26,6 +26,7 @@ int main(void)
         goto SYS_EXIT;
     }
 
+    // Consider removing and using timer-triggered instead
     retval = CAN_SetValue(PCAN_USBBUS1, PCAN_RECEIVE_EVENT, message, 256);
 
     if (retval != PCAN_ERROR_OK) {
