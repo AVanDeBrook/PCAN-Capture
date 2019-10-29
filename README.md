@@ -34,6 +34,7 @@ The following files are included in the `lib` folder:
 * Slow down output to make voltages readable.
 * Consider using seperate thread to update voltage readings, then read from the user thread.
 * Consider using timer-triggered events rather than event triggered.
+* Used Windows API to create and manage threads. Documentation [here](https://docs.microsoft.com/en-us/windows/win32/procthread/creating-threads)
 
 # Current Problems
 * Current implementation uses event triggered message reading, for whatever reason this results in a message with 0x205 being read for more often than others.

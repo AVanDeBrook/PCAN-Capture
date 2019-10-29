@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+
 #include "PCANBasic.h"
 #include "main.h"
 
@@ -9,7 +10,36 @@ TPCANMsg can_message; // CAN Message buffer
 TPCANTimestamp timestamp; // Timestamp buffer
 Voltage_Group_t cell_voltages[4]; // Data structure for cell voltages
 
+bool running_state = true;
+
 int main(void)
+{
+    int input = SHOW_MENU;
+    HANDLE db_thread_handle;
+    DWORD db_thread_id;
+    int dummy_param = 0;
+
+    CAN_Init();
+
+    db_thread_handle = CreateThread(NULL, 0, update_database, &dummy_param, 0,  &db_thread_id);
+
+    if (db_thread_handle == NULL) {
+        cout << "Thread not created.\n";
+        return 0;
+    }
+
+    while (input != (int)APP_EXIT) {
+        input_trigger((UserInput_t)input);
+        cin >> input;
+    }
+
+    running_state = false;
+    WaitForSingleObject(db_thread_handle, 0);
+    CAN_Uninitialize(PCAN_USBBUS1);
+    return 0;
+}
+
+void CAN_Init(void)
 {
     TPCANStatus retval;
     char message[256];
@@ -23,16 +53,7 @@ int main(void)
     } else {
         CAN_GetErrorText(retval, 0, message);
         cout << message << endl;
-        goto SYS_EXIT;
-    }
-
-    // Consider removing and using timer-triggered instead
-    retval = CAN_SetValue(PCAN_USBBUS1, PCAN_RECEIVE_EVENT, message, 256);
-
-    if (retval != PCAN_ERROR_OK) {
-        CAN_GetErrorText(retval, 0, message);
-        cout << message << endl;
-        goto SYS_EXIT;
+        return;
     }
 
     // Filter messages with ID 0x200 - 0x203
@@ -43,24 +64,34 @@ int main(void)
     if (retval == PCAN_ERROR_OK) {
         cout << "Filtering for CAN Messages with IDs 0x200 - 0x205" << endl;
     } else {
-        // No need to exit, the paranoia check below allows the program to keep running normaly.
-        // Maybe just a little slower.
+        // No need to exit, there are checks later to verify message IDs
         CAN_GetErrorText(retval, 0, message);
         cout << message << endl;
     }
+}
+
+DWORD WINAPI update_database(LPVOID dummy_param)
+{
+    TPCANStatus retval;
+    char message[256];
 
     while (1) {
+
+        if (!running_state) {
+            return -1;
+        }
+
         // Read next CAN message in queue
         retval = CAN_Read(PCAN_USBBUS1, &can_message, &timestamp);
 
         // Error handling
         if (retval != PCAN_ERROR_OK && retval != PCAN_ERROR_QRCVEMPTY) {
             CAN_GetErrorText(retval, 0, message);
-            cout << message << endl;
-            goto SYS_EXIT;
+            //cout << message << endl;
+            return -1;
         } else {
             CAN_GetErrorText(retval, 0, message);
-            cout << message << endl;
+            //cout << message << endl;
         }
 
         // Paranoia check to make sure the message IDs are correct.
@@ -68,17 +99,11 @@ int main(void)
         // According to the API docs the filtering mechanism does not
         // guarantee only messages in this range.
         if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x203) {
-            //print_message_data();
             process_voltages();
-            display_voltages();
         }
 
-        //Sleep(1000);
+        //Sleep(100);
     }
-
-    SYS_EXIT:
-        CAN_Uninitialize(PCAN_NONEBUS);
-        return 0;
 }
 
 void process_voltages(void)
@@ -98,6 +123,8 @@ void process_voltages(void)
     voltage_calcs[2] = can_message.DATA[6] << 8;
     voltage_calcs[2] |= can_message.DATA[5];
 
+    cell_voltages[can_message.ID - 0x200].message_id = can_message.ID;
+
     // Save voltages to data structure.
     for (int i = 0; i < 3; i++) {
         cell_voltages[can_message.ID - 0x200].voltages[i] = voltage_calcs[i];
@@ -106,9 +133,10 @@ void process_voltages(void)
 
 void display_voltages(void)
 {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("Cell %d: %d V\n", ((3*i) + j), (cell_voltages[i].voltages[j] / 1000));
+            float temp = cell_voltages[i].voltages[j] / 1000.0;
+            printf("Cell %02d: %0.3f V\n", ((3*i) + j) + 1, temp);
         }
     }
 }
@@ -122,20 +150,16 @@ void print_message_data(void)
     printf("\n");
 }
 
-void input_trigger(UserInput_t user_input)
+void input_trigger(UserInput_t input)
 {
-    switch (user_input) {
+    switch (input) {
     case SHOW_MENU:
-        break;
-    case READ_VOLTAGES:
-        if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x205) {
-            process_voltages();
-        }
+        cout << "Options:\n1) Display Voltages\n2) Exit\n\nAction: ";
         break;
     case PRINT_VOLTAGES:
-        //TODO: print_voltages();
+        display_voltages();
         break;
     default:
-        break;
+        cout << "Enter a value from the menu.\n";
     }
 }
