@@ -6,26 +6,44 @@ Included in the `docs` folder is the compiled HTML documentation of the PCAN Vie
 
 More information on the hardware in the following links:
 * [PEAK-System Technik PCAN-USB Adapter](https://phytools.com/collections/usb-interfaces/products/pcan-usb-adapter) info can be found under `Download Links` at the bottom of the page.
-* [foxBMS CAN Messages](https://docs.foxbms.org/en/latest/getting_started/communicating/communicating.html) in the `TX Messages` table. Specifically, message IDs `0x200` - `0x205`(only focusing on module 0 for now, as we only have 1 slave board).
+* [foxBMS CAN Messages](https://docs.foxbms.org/en/latest/getting_started/communicating/communicating.html) in the `TX Messages` table. Specifically, message IDs `0x200` - `0x205` (only focusing on module 0 for now, as we are only testing with 1 slave board).
 
 Note: Decompile the documentation using something like 7ZIP or WinRAR to view the actual documentation.
 
 # Code
-In the `src` folder is the code that is used to read the CAN messages from the PCAN Viewer and convert the data into an easier to read decimal format for every cell in a BMS Slave board.
+The `src` folder contains the actual code used to read cell voltages from the CAN messages. This code essentially makes 2 threads. One is responsible for accepting user input and displaying the information that has been read from the CAN messages sent by the battery system. The second thread's sole purpose is to constantly read and update the database that contains the information that has been recieved by the system. This will carry on forever, or until the program is terminated.
 
-This project uses Make along with [GCC](https://gcc.gnu.org/) to compile and build the project.
-
-To build the project, run the following two commands:
-
-```bash
-$ cd src
-$ make
-```
-The compilation will result in a binary file called `can_cap.exe`.
+Upon proper termination of the program, all used memory is freed and the PCAN USB device and API is uninitialized. This is not guaranteed to happen when the program exits irregularly e.g. keyboard interrupt.
 
 The following files are included in the `lib` folder:
 * `PCANBasic.h`: Contains the basic API function prototypes, PCAN types, and enumerations for use with the API.
 * `PCANBasic.dll`: Contains the actual implementation of the API.
+
+# Building / Running
+This project can be built using Make, there is a `makefile` included in the `src` directory.
+
+To build this project, do the following (assuming you start from the root of this repo):
+```bash
+$ cd src
+$ make
+```
+This will result in an executable file called `PCAN_Cap.exe`, running this file will execute the project. Keep in mind, the output of this program is contained entirely within the command line.
+
+The executable is compiled with debugging symbols by using the `-g` switch in G++. The executable can be compiled without debugging symbols by changing the following lines in [`src/makefile`](src/makefile) like so:
+```make
+FLAGS = -g
+```
+to
+```make
+FLAGS =
+```
+
+For reference, these are the specs of the main machine this code was developed and tested on:
+* Windows 10, update 1903
+* GNU GCC version 8.1.0
+* GNU G++ version 8.1.0
+* GNU Make version 4.2.1
+* GNU GDB version 8.1
 
 # Notes/TODO
 * This code is meant to be used with specific hardware in a specific way, may not work in a generic way.
@@ -35,7 +53,3 @@ The following files are included in the `lib` folder:
 * Consider using seperate thread to update voltage readings, then read from the user thread.
 * Consider using timer-triggered events rather than event triggered.
 * Used Windows API to create and manage threads. Documentation [here](https://docs.microsoft.com/en-us/windows/win32/procthread/creating-threads)
-
-# Current Problems
-* Current implementation uses event triggered message reading, for whatever reason this results in a message with 0x205 being read for more often than others.
-* Considering switching to a timer triggered message reading system and seperating into two threads, one for reading and updating messages the other for displaying data upon user request.

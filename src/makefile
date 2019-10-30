@@ -2,6 +2,7 @@ CC = g++
 LIB = -L../lib -lPCANBasic -I../lib
 INC = -I.
 FLAGS = -g
+OUTPUT = -o $@
 
-can_cap.exe: main.cpp
-	$(CC) $(FLAGS) -o $@ $^ $(LIB) $(INC)
+PCAN_Cap.exe: main.cpp
+	$(CC) $(FLAGS) $(OUTPUT) $^ $(LIB) $(INC)
