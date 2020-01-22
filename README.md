@@ -44,12 +44,11 @@ For reference, these are the specs of the main machine this code was developed a
 * GNU G++ version 8.1.0
 * GNU Make version 4.2.1
 * GNU GDB version 8.1
+* [Download here](https://sourceforge.net/projects/mingw-w64/)
 
 # Notes/TODO
-* This code is meant to be used with specific hardware in a specific way, may not work in a generic way.
+* Fair warning: This code is meant to be used with specific hardware in a specific way.
 * If the PCAN hardware is not connected to the PC the program will fail to initialize and exit.
 * Hardware used: [PCAN-USB Adapter](https://phytools.com/collections/usb-interfaces/products/pcan-usb-adapter)
-* Slow down output to make voltages readable.
-* Consider using seperate thread to update voltage readings, then read from the user thread.
-* Consider using timer-triggered events rather than event triggered.
+* Uses seperate threads to update and display cell voltages based on user input.
 * Used Windows API to create and manage threads. Documentation [here](https://docs.microsoft.com/en-us/windows/win32/procthread/creating-threads)
