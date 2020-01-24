@@ -16,8 +16,10 @@ The `src` folder contains the actual code used to read cell voltages from the CA
 Upon proper termination of the program, all used memory is freed and the PCAN USB device and API is uninitialized. This is not guaranteed to happen when the program exits irregularly e.g. keyboard interrupt.
 
 The following files are included in the `lib` folder:
-* `PCANBasic.h`: Contains the basic API function prototypes, PCAN types, and enumerations for use with the API.
 * `PCANBasic.dll`: Contains the actual implementation of the API.
+
+The PCANBasic header file has been moved to `inc`:
+* `PCANBasic.h`: Contains the basic API function prototypes, PCAN types, and enumerations for use with the API.
 
 # Building / Running
 This project can be built using Make, there is a `makefile` included in the `src` directory.
@@ -29,7 +31,7 @@ $ make
 ```
 This will result in an executable file called `PCAN_Cap.exe`, running this file will execute the project. Keep in mind, the output of this program is contained entirely within the command line.
 
-The executable is compiled with debugging symbols by using the `-g` switch in G++. The executable can be compiled without debugging symbols by changing the following lines in [`src/makefile`](src/makefile) like so:
+The executable is compiled with debugging symbols by using the `-g` switch in G++. The executable can be compiled without debugging symbols by changing the following lines in [`makefile`](makefile) like so:
 ```make
 FLAGS = -g
 ```
@@ -39,6 +41,7 @@ FLAGS =
 ```
 
 For reference, these are the specs of the main machine this code was developed and tested on:
+* Most recent version of VSCode/VSCodium
 * Windows 10, update 1903
 * GNU GCC version 8.1.0
 * GNU G++ version 8.1.0
@@ -52,3 +55,4 @@ For reference, these are the specs of the main machine this code was developed a
 * Hardware used: [PCAN-USB Adapter](https://phytools.com/collections/usb-interfaces/products/pcan-usb-adapter)
 * Uses seperate threads to update and display cell voltages based on user input.
 * Used Windows API to create and manage threads. Documentation [here](https://docs.microsoft.com/en-us/windows/win32/procthread/creating-threads)
+* **TODO**: Make a seperate branch and start organizing and refactoring the code (object oriented maybe?)

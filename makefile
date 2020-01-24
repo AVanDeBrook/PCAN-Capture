@@ -22,5 +22,5 @@ PCAN_Cap.exe: $(_OBJS)
 .PHONY: clean
 
 clean:
-	del $(OUT_DIR)\*.o
-	del $(OUT_DIR)\*.exe
+	rm -rf $(OUT_DIR)\*.o
+	rm -rf $(OUT_DIR)\*.exe

@@ -13,8 +13,14 @@ typedef enum _UserInput_t {
     APP_EXIT        = 0x02,
 } UserInput_t;
 
+typedef enum _StdError_e {
+    E_NONE = 0x00,  // No error
+    E_INIT = 0xFF,  // Error in initialization
+    E_ERR = 0x01,   // Unknown error
+} StdError_e;
+
 /****** Prototypes ******/
-void CAN_Init(void);
+StdError_e CAN_Init(void);
 DWORD WINAPI update_database(LPVOID dummy_param);
 void process_voltages(void);
 void display_voltages(void);

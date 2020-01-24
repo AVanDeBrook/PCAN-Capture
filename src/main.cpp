@@ -18,14 +18,20 @@ int main(void)
     HANDLE db_thread_handle;
     DWORD db_thread_id;
     int dummy_param = 0;
+    StdError_e retval = E_NONE;
 
-    CAN_Init();
+    retval = CAN_Init();
+
+    if (retval == E_INIT) {
+        cerr << "Error initializing PCAN hardware, hardware most likely not connected.\n";
+        return -1;
+    }
 
     db_thread_handle = CreateThread(NULL, 0, update_database, &dummy_param, 0,  &db_thread_id);
 
     if (db_thread_handle == NULL) {
         cout << "Thread not created.\n";
-        return 0;
+        return -1;
     }
 
     while (input != (int)APP_EXIT) {
@@ -39,10 +45,11 @@ int main(void)
     return 0;
 }
 
-void CAN_Init(void)
+StdError_e CAN_Init(void)
 {
     TPCANStatus retval;
     char message[256];
+    StdError_e return_code = E_NONE;
 
     // Initialize PCAN on USB Bus 1 @ 0.5 MHz
     retval = CAN_Initialize(PCAN_USBBUS1, PCAN_BAUD_500K);
@@ -53,7 +60,8 @@ void CAN_Init(void)
     } else {
         CAN_GetErrorText(retval, 0, message);
         cout << message << endl;
-        return;
+        return_code = E_INIT;
+        return return_code;
     }
 
     // Filter messages with ID 0x200 - 0x203
@@ -68,6 +76,8 @@ void CAN_Init(void)
         CAN_GetErrorText(retval, 0, message);
         cout << message << endl;
     }
+
+    return return_code;
 }
 
 DWORD WINAPI update_database(LPVOID dummy_param)
