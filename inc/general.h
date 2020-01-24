@@ -1,7 +1,10 @@
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
+#include <iostream>
+#include <windows.h>
 #include <stdint.h>
+#include "PCANBasic.h"
 
 /****** Definitions, Constants, Enumerations ******/
 #define MOD_0_CELL_BASE 0x200
