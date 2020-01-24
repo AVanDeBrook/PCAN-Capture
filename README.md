@@ -1,3 +1,9 @@
+# Important TODOs
+* Fix makefile so that everything compiles (there are currently problems with the compile process)
+* Make sure functions can see the variables they need
+* Move some (read: all) global variables to relevant classes, 'cause OOP
+* Make sure everything still works
+
 # PCAN-Capture
 This project uses the PEAK PCAN Viewer to read CAN messages from the foxBMS battery management system and display the voltages in decimal format.
 
