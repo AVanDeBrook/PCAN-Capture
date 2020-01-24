@@ -6,14 +6,14 @@ Included in the `docs` folder is the compiled HTML documentation of the PCAN Vie
 
 More information on the hardware in the following links:
 * [PEAK-System Technik PCAN-USB Adapter](https://phytools.com/collections/usb-interfaces/products/pcan-usb-adapter) info can be found under `Download Links` at the bottom of the page.
-* [foxBMS CAN Messages](https://docs.foxbms.org/en/latest/getting_started/communicating/communicating.html) in the `TX Messages` table. Specifically, message IDs `0x200` - `0x205` (only focusing on module 0 for now, as we are only testing with 1 slave board).
+* [foxBMS CAN Messages](https://docs.foxbms.org/en/latest/getting_started/communicating/communicating.html#can-messages) in the `TX Messages` table. Specifically, message IDs `0x200` - `0x205` (only focusing on module 0 for now, as we are only testing with 1 slave board).
 
-Note: Decompile the documentation using something like 7ZIP or WinRAR to view the actual documentation.
+Note: Decompile the documentation using something like [7-Zip](https://www.7-zip.org/) or WinRAR to view the actual documentation (I highly recommend 7-Zip over WinRAR).
 
 # Code
 The `src` folder contains the actual code used to read cell voltages from the CAN messages. This code essentially makes 2 threads. One is responsible for accepting user input and displaying the information that has been read from the CAN messages sent by the battery system. The second thread's sole purpose is to constantly read and update the database that contains the information that has been recieved by the system. This will carry on forever, or until the program is terminated.
 
-Upon proper termination of the program, all used memory is freed and the PCAN USB device and API is uninitialized. This is not guaranteed to happen when the program exits irregularly e.g. keyboard interrupt.
+Upon proper termination of the program, all used memory and threads are freed and the PCAN USB device and API is uninitialized. This is not guaranteed to happen when the program exits irregularly e.g. keyboard interrupt or crash.
 
 The following files are included in the `lib` folder:
 * `PCANBasic.dll`: Contains the actual implementation of the API.
@@ -47,7 +47,8 @@ For reference, these are the specs of the main machine this code was developed a
 * GNU G++ version 8.1.0
 * GNU Make version 4.2.1
 * GNU GDB version 8.1
-* [Download here](https://sourceforge.net/projects/mingw-w64/)
+* [Download here](https://sourceforge.net/projects/mingw-w64/) (fair warning; it's a sourceforge link)
+* **Note**: Make sure to download the relevant drivers for the PCAN hardware, the API is packaged with this repo
 
 # Notes/TODO
 * Fair warning: This code is meant to be used with specific hardware in a specific way.
