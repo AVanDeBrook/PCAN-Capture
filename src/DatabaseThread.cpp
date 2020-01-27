@@ -1,6 +1,9 @@
 #include "DatabaseThread.h"
+#include "Utils.h"
 
 extern TPCANMsg can_message;
+extern TPCANTimestamp timestamp;
+extern bool running_state;
 
 DWORD WINAPI DatabaseThread::update_database(LPVOID dummy_param)
 {
@@ -31,7 +34,7 @@ DWORD WINAPI DatabaseThread::update_database(LPVOID dummy_param)
         // According to the API docs the filtering mechanism does not
         // guarantee only messages in this range.
         if ((can_message.ID & 0x0FFF) >= 0x200 && (can_message.ID & 0x0FFF) <= 0x203) {
-            process_voltages();
+            Utils::process_voltages();
         }
 
         //Sleep(100);

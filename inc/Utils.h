@@ -1,4 +1,4 @@
-#ifdef _UTILS_H
+#ifndef _UTILS_H
 #define _UTILS_H
 
 #include <iostream>
@@ -9,10 +9,10 @@ class Utils
     private:
 
     public:
-        void process_voltages(void);
-        void display_voltages(void);
-        void print_message_data(void);
-        void input_trigger(void);
-}
+        static void process_voltages(void);
+        static void display_voltages(void);
+        static void print_message_data(void);
+        static void input_trigger(UserInput_t input);
+};
 
 #endif

@@ -1,5 +1,8 @@
 #include "Utils.h"
 
+extern TPCANMsg can_message;
+extern Voltage_Group_t cell_voltages[4];
+
 void Utils::process_voltages(void)
 {
     // Each cell voltage is 16 bits. The first byte is a status byte.
@@ -48,12 +51,12 @@ void Utils::input_trigger(UserInput_t input)
 {
     switch (input) {
     case SHOW_MENU:
-        cout << "Options:\n1) Display Voltages\n2) Exit\n\nAction: ";
+        std::cout << "Options:\n1) Display Voltages\n2) Exit\n\nAction: ";
         break;
     case PRINT_VOLTAGES:
         display_voltages();
         break;
     default:
-        cout << "Enter a value from the menu.\n";
+        std::cout << "Enter a value from the menu.\n";
     }
 }

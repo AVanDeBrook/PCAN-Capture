@@ -23,12 +23,7 @@ typedef enum _StdError_e {
 } StdError_e;
 
 /****** Prototypes ******/
-StdError_e CAN_Init(void);
-DWORD WINAPI update_database(LPVOID dummy_param);
-void process_voltages(void);
-void display_voltages(void);
-void print_message_data(void);
-void input_trigger(UserInput_t user_input);
+//DWORD WINAPI update_database(LPVOID dummy_param);
 
 /****** Data Structures ******/
 typedef struct _Voltage_Group_t {

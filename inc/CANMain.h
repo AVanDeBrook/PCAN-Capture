@@ -1,4 +1,4 @@
-#ifdef _CAN_MAIN_H
+#ifndef _CAN_MAIN_H
 #define _CAN_MAIN_H
 
 #include <iostream>
@@ -9,7 +9,9 @@ class CANMain
     private:
 
     public:
+        CANMain();
+        ~CANMain();
         StdError_e init(void);
-}
+};
 
 #endif

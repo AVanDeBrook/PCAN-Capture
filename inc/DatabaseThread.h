@@ -1,4 +1,4 @@
-#ifdef _DATABASE_THREAD_H
+#ifndef _DATABASE_THREAD_H
 #define _DATABASE_THREAD_H
 
 #include <iostream>
@@ -17,14 +17,14 @@ class DatabaseThread
         ~DatabaseThread();
 
         /**
-         * Function to update the can message database. Executed in a thread 
+         * Function to update the can message database. Executed in a thread
          * seperate from the main function.
-         * 
+         *
          * @param LPVOID dummy parameter, not used in this function. Required
          *               prototype for a thread in windows.
-         * @return 
-         */ 
+         * @return
+         */
         DWORD WINAPI update_database(LPVOID dummy_param);
-}
+};
 
 #endif

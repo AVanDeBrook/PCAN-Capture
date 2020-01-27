@@ -1,6 +1,6 @@
 #include "CANMain.h"
 
-StdError_e PCANMAIN::init(void)
+StdError_e CANMain::init(void)
 {
     TPCANStatus retval;
     char message[256];
@@ -11,10 +11,10 @@ StdError_e PCANMAIN::init(void)
 
     // Error handling
     if (retval == PCAN_ERROR_OK) {
-        cout << "PCAN USB Bus Initialized" << endl;
+        std::cout << "PCAN USB Bus Initialized" << std::endl;
     } else {
         CAN_GetErrorText(retval, 0, message);
-        cout << message << endl;
+        std::cout << message << std::endl;
         return_code = E_INIT;
         return return_code;
     }
@@ -25,11 +25,11 @@ StdError_e PCANMAIN::init(void)
 
     // Error handling
     if (retval == PCAN_ERROR_OK) {
-        cout << "Filtering for CAN Messages with IDs 0x200 - 0x205" << endl;
+        std::cout << "Filtering for CAN Messages with IDs 0x200 - 0x205" << std::endl;
     } else {
         // No need to exit, there are checks later to verify message IDs
         CAN_GetErrorText(retval, 0, message);
-        cout << message << endl;
+        std::cout << message << std::endl;
     }
 
     return return_code;
