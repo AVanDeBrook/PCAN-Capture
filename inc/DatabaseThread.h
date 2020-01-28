@@ -8,13 +8,20 @@
 class DatabaseThread
 {
     private:
-
+        HANDLE db_thread_handle;
+        DWORD db_thread_id;
     public:
+        bool thread_errors = false;
         /// Constructor(s)
-        DatabaseThread();
+        DatabaseThread(void);
 
         /// Deconstructor(s)
         ~DatabaseThread();
+
+        /**
+         * Function to initialize the thread(s) for database operations.
+         */
+        void init(void);
 
         /**
          * Function to update the can message database. Executed in a thread
@@ -24,7 +31,7 @@ class DatabaseThread
          *               prototype for a thread in windows.
          * @return
          */
-        DWORD WINAPI update_database(LPVOID dummy_param);
+        static DWORD WINAPI update_database(LPVOID dummy_param);
 };
 
 #endif

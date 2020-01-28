@@ -5,6 +5,30 @@ extern TPCANMsg can_message;
 extern TPCANTimestamp timestamp;
 extern bool running_state;
 
+DatabaseThread::DatabaseThread(void)
+{
+    DatabaseThread::init();
+}
+
+DatabaseThread::~DatabaseThread()
+{
+    WaitForSingleObject(db_thread_handle, 0);
+}
+
+void DatabaseThread::init(void)
+{
+    int dummy_param = 0;
+
+    db_thread_handle = CreateThread(NULL, 0, DatabaseThread::update_database, &dummy_param, 0, &db_thread_id);
+
+    if (db_thread_handle == NULL) {
+        std::cerr << "Database thread not created.\n";
+        thread_errors = true;
+    } else {
+        printf("Thread created.\nID: %d\nHandle: %d\n", db_thread_id, db_thread_handle);
+    }
+}
+
 DWORD WINAPI DatabaseThread::update_database(LPVOID dummy_param)
 {
     TPCANStatus retval;

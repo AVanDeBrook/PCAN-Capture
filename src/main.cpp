@@ -11,5 +11,8 @@ bool running_state = true;
 
 int main(void)
 {
+    CANMain pcan_interface;
+    DatabaseThread db_threads;
 
+    return -1;
 }

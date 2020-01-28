@@ -19,11 +19,11 @@ typedef enum _UserInput_t {
 typedef enum _StdError_e {
     E_NONE = 0x00,  // No error
     E_INIT = 0xFF,  // Error in initialization
+    E_FILTER = 0x02,  // Error setting up a message filter
     E_ERR = 0x01,   // Unknown error
 } StdError_e;
 
 /****** Prototypes ******/
-//DWORD WINAPI update_database(LPVOID dummy_param);
 
 /****** Data Structures ******/
 typedef struct _Voltage_Group_t {
