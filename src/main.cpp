@@ -13,6 +13,23 @@ int main(void)
 {
     CANMain pcan_interface;
     DatabaseThread db_threads;
+    int input;
 
-    return -1;
+    for (;;) {
+        Utils::input_trigger(SHOW_MENU);
+        std::cin >> input;
+        Utils::input_trigger((UserInput_t)input);
+
+        // Yeah, yeah, don't break out of for-loops.
+        // I think this fits the special condition clause.
+        if (input == APP_EXIT) {
+            break;
+        }
+    }
+
+    // Deinitialize and free threads/memory
+    pcan_interface.~CANMain();
+    db_threads.~DatabaseThread();
+
+    return 0;
 }

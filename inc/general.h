@@ -11,9 +11,10 @@
 #define MOD_0_CELL_MAX 0x205
 
 typedef enum _UserInput_t {
-    SHOW_MENU       = 0x00,
-    PRINT_VOLTAGES  = 0x01,
-    APP_EXIT        = 0x02,
+    STANDBY         = 0x00,
+    SHOW_MENU       = 0x01,
+    PRINT_VOLTAGES  = 0x02,
+    APP_EXIT        = 0x03,
 } UserInput_t;
 
 typedef enum _StdError_e {

@@ -50,12 +50,16 @@ void Utils::print_message_data(void)
 void Utils::input_trigger(UserInput_t input)
 {
     switch (input) {
+    case STANDBY:
+        break;
     case SHOW_MENU:
-        std::cout << "Options:\n1) Display Voltages\n2) Exit\n\nAction: ";
+        std::cout << "\nOptions:\n1) Show Menu\n2) Print Voltages\n3) Exit\n\nAction: ";
         break;
     case PRINT_VOLTAGES:
-        display_voltages();
+        Utils::display_voltages();
         break;
+    case APP_EXIT:
+        std::cout << "Exitting..." << std::endl;
     default:
         std::cout << "Enter a value from the menu.\n";
     }

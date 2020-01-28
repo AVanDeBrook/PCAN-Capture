@@ -64,7 +64,7 @@ StdError_e CANMain::filter_messages(int low_msg, int high_msg)
     retval = CAN_FilterMessages(PCAN_USBBUS1, low_msg, high_msg, PCAN_MESSAGE_STANDARD);
 
     if (retval == PCAN_ERROR_OK) {
-        printf("Filtering for CAN messages: %d - %d\n", low_msg, high_msg);
+        printf("Filtering for CAN messages: 0x%X - 0x%X\n", low_msg, high_msg);
     } else {
         CAN_GetErrorText(retval, 0, message);
         std::cerr << message << std::endl;
