@@ -144,3 +144,28 @@ StdError_e CANMain::init_threads(void)
 
     return return_code;
 }
+
+StdError_e CANMain::reset_system(void)
+{
+    TPCANStatus retval;
+    char message[256];
+    StdError_e return_code = E_NONE;
+
+    TPCANMsg can_message = {
+        .ID = 0x95,
+        .MSGTYPE = PCAN_MESSAGE_STANDARD,
+        .LEN = 0,
+        .DATA = {0}
+    };
+
+    retval = CAN_Write(PCAN_USBBUS1, &can_message);
+
+    if (retval != PCAN_ERROR_OK) {
+        CAN_GetErrorText(retval, 0, message);
+        return_code = E_ERR;
+    } else {
+        std::cout << "Reset Signal Sent.\n";
+    }
+
+    return return_code;
+}

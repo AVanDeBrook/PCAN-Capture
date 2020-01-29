@@ -3,6 +3,7 @@
 #include "Utils.h"
 #include "DatabaseThread.h"
 
+// @TODO: Throw this stuff into a data structure, so it's more oganized.
 TPCANMsg can_message; // CAN Message buffer
 TPCANTimestamp timestamp; // Timestamp buffer
 Voltage_Group_t cell_voltages[4]; // Data structure for cell voltages
@@ -13,9 +14,14 @@ StateReq_e request = STATE_STANDBY;
 
 int main(void)
 {
-    CANMain pcan_interface;
+    CANMain pcan_interface = new CANMain(false);
     DatabaseThread db_threads;
     int input;
+
+    // Important note: thread to request states must be initialized first,
+    // then send reset signal to system, otherwise system will go into error.
+    pcan_interface.init_threads();
+    pcan_interface.reset_system();
 
     while (running_state) {
         Utils::input_trigger(SHOW_MENU);

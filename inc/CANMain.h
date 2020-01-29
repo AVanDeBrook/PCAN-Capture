@@ -73,6 +73,11 @@ class CANMain
          * @return StdError_e   Returns a standard error type enumerated in general.h.
          */
         StdError_e init_threads(void);
+
+        /**
+         * Function to send the reset signal to the FoxBMS system.
+         */
+        StdError_e reset_system(void);
 };
 
 #endif
