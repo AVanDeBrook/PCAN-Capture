@@ -1,5 +1,10 @@
 #include "CANMain.h"
 
+extern TPCANMsg can_message;
+extern TPCANTimestamp timestamp;
+extern bool running_state;
+extern StateReq_e request;
+
 CANMain::CANMain(void)
 {
     StdError_e retval = E_NONE;
@@ -13,8 +18,27 @@ CANMain::CANMain(void)
     retval = CANMain::filter_messages(MOD_0_CELL_BASE, MOD_0_CELL_BASE + 3);
 }
 
+CANMain::CANMain(bool message_filtering)
+{
+    StdError_e retval = E_NONE;
+
+    retval = CANMain::init();
+
+    if (retval != E_NONE) {
+        std::cerr << "Error initializing PCAN API.\n";
+    }
+
+    if (message_filtering) {
+        retval = CANMain::filter_messages(MOD_0_CELL_BASE, MOD_0_CELL_BASE + 3);
+    }
+}
+
 CANMain::~CANMain()
 {
+    if (thread_created) {
+        WaitForSingleObject(can_thread_handle, 0);
+    }
+
     CAN_Uninitialize(PCAN_USBBUS1);
 }
 
@@ -37,7 +61,7 @@ StdError_e CANMain::init(void)
         return return_code;
     }
 
-    /*
+    /* -- Keeping this around just in case. --
     // Filter messages with ID 0x200 - 0x203
     // The simulated battery is only 12 cells, 4 messages x 3 cells per message = 12 cells
     retval = CAN_FilterMessages(PCAN_USBBUS1, MOD_0_CELL_BASE, MOD_0_CELL_BASE + 3, PCAN_MESSAGE_STANDARD);
@@ -69,6 +93,53 @@ StdError_e CANMain::filter_messages(int low_msg, int high_msg)
         CAN_GetErrorText(retval, 0, message);
         std::cerr << message << std::endl;
         return_code = E_FILTER;
+    }
+
+    return return_code;
+}
+
+DWORD WINAPI CANMain::request_state(LPVOID dummy_param)
+{
+    char message[256];
+    TPCANStatus retval;
+
+    TPCANMsg can_message = {
+        .ID = 0x120,
+        .MSGTYPE = PCAN_MESSAGE_STANDARD,
+        .LEN = 1,
+        .DATA = {0, (BYTE) request, 0, 0, 0, 0, 0, 0}
+    };
+
+    while (running_state) {
+        retval = CAN_Write(PCAN_USBBUS1, &can_message);
+
+        if (retval != PCAN_ERROR_OK && retval != PCAN_ERROR_QXMTFULL) {
+            CAN_GetErrorText(retval, 0, message);
+            return -1;
+        } else {
+            CAN_GetErrorText(retval, 0, message);
+        }
+
+        Sleep(100);
+    }
+
+    return 1;
+}
+
+StdError_e CANMain::init_threads(void)
+{
+    int dummy_param = 0;
+    StdError_e return_code = E_NONE;
+
+    can_thread_handle = CreateThread(NULL, 0, CANMain::request_state, &dummy_param, 0, &can_thread_id);
+
+    if (can_thread_handle == NULL) {
+        std::cerr << "request_state thread not created.\n";
+        thread_errors = true;
+        return_code = E_INIT;
+    } else {
+        printf("request_state thread created.\nID: %d\nHandle: %d\n", can_thread_id, can_thread_handle);
+        thread_created = true;
     }
 
     return return_code;

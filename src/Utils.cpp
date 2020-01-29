@@ -2,6 +2,7 @@
 
 extern TPCANMsg can_message;
 extern Voltage_Group_t cell_voltages[4];
+extern SysState_e system_state;
 
 void Utils::process_voltages(void)
 {
@@ -53,14 +54,57 @@ void Utils::input_trigger(UserInput_t input)
     case STANDBY:
         break;
     case SHOW_MENU:
-        std::cout << "\nOptions:\n1) Show Menu\n2) Print Voltages\n3) Exit\n\nAction: ";
+        std::cout << "\nOptions:\n1) Show Menu\n2) Print Voltages\n3) System State\n4) Exit\n\nAction: ";
         break;
     case PRINT_VOLTAGES:
         Utils::display_voltages();
         break;
+    case SYS_STATE:
+        Utils::display_state();
+        break;
     case APP_EXIT:
         std::cout << "Exitting..." << std::endl;
+        break;
     default:
         std::cout << "Enter a value from the menu.\n";
+    }
+}
+
+void Utils::process_state(void)
+{
+    system_state = (SysState_e) can_message.DATA[1];
+}
+
+void Utils::display_state(void)
+{
+    printf("System State: 0x%X - ", system_state);
+
+    switch (system_state) {
+    case SYS_UNINIT:
+        std::cout << "Uninitialized\n";
+        break;
+    case SYS_IDLE:
+        std::cout << "Idle\n";
+        break;
+    case SYS_STANDBY:
+        std::cout << "Standby\n";
+        break;
+    case SYS_PRECHARGE_NORMAL:
+        std::cout << "Precharge (normal)\n";
+        break;
+    case SYS_NORMAL:
+        std::cout << "Normal\n";
+        break;
+    case SYS_PRECHARGE_CHARGE:
+        std::cout << "Precharge (charge)\n";
+        break;
+    case SYS_CHARGE:
+        std::cout << "Charge\n";
+        break;
+    case SYS_ERROR:
+        std::cout << "Error\n";
+        break;
+    default:
+        break;
     }
 }

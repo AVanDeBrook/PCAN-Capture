@@ -25,7 +25,7 @@ void DatabaseThread::init(void)
         std::cerr << "Database thread not created.\n";
         thread_errors = true;
     } else {
-        printf("Thread created.\nID: %d\nHandle: %d\n", db_thread_id, db_thread_handle);
+        printf("Database thread created.\nID: %d\nHandle: %d\n", db_thread_id, db_thread_handle);
     }
 }
 
@@ -34,23 +34,16 @@ DWORD WINAPI DatabaseThread::update_database(LPVOID dummy_param)
     TPCANStatus retval;
     char message[256];
 
-    while (1) {
-
-        if (!running_state) {
-            return -1;
-        }
-
+    while (running_state) {
         // Read next CAN message in queue
         retval = CAN_Read(PCAN_USBBUS1, &can_message, &timestamp);
 
         // Error handling
         if (retval != PCAN_ERROR_OK && retval != PCAN_ERROR_QRCVEMPTY) {
             CAN_GetErrorText(retval, 0, message);
-            //cout << message << endl;
             return -1;
         } else {
             CAN_GetErrorText(retval, 0, message);
-            //cout << message << endl;
         }
 
         // Paranoia check to make sure the message IDs are correct.
@@ -61,6 +54,10 @@ DWORD WINAPI DatabaseThread::update_database(LPVOID dummy_param)
             Utils::process_voltages();
         }
 
-        //Sleep(100);
+        if ((can_message.ID & 0x0FFF) == 0x110) {
+            Utils::process_state();
+        }
     }
+
+    return 1;
 }

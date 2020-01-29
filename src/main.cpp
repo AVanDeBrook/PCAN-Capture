@@ -6,8 +6,10 @@
 TPCANMsg can_message; // CAN Message buffer
 TPCANTimestamp timestamp; // Timestamp buffer
 Voltage_Group_t cell_voltages[4]; // Data structure for cell voltages
+SysState_e system_state;
 
 bool running_state = true;
+StateReq_e request = STATE_STANDBY;
 
 int main(void)
 {
@@ -15,15 +17,15 @@ int main(void)
     DatabaseThread db_threads;
     int input;
 
-    for (;;) {
+    while (running_state) {
         Utils::input_trigger(SHOW_MENU);
         std::cin >> input;
         Utils::input_trigger((UserInput_t)input);
 
         // Yeah, yeah, don't break out of for-loops.
-        // I think this fits the special condition clause.
+        // However, I think this fits the special condition clause.
         if (input == APP_EXIT) {
-            break;
+            running_state = false;
         }
     }
 
